@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HTML5/CSS3立方体翻转3D全屏焦点图DEMO演示</title>
+
+<!--主要样式-->
+<style>
+	/*.box {
+		display: -webkit-box;
+		vertical-align: middle;
+	}
+	.box div{
+		height: 100px;
+		box-flex: 1;
+		-webkit-box-flex: 1;
+		background: #ccc;
+		border: 1px solid #fff;
+	}*/
+	.box {
+	  display: -webkit-box;  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+	  display: -moz-box;    /* 老版本语法: Firefox (buggy) */ 
+	  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+	  display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
+	  display: flex;       /* 新版本语法： Opera 12.1, Firefox 22+ */
+
+	  /*垂直居中*/	
+	  /*老版本语法*/
+	  -webkit-box-align: center; 
+	  -moz-box-align: center;
+	  /*混合版本语法*/
+	  -ms-flex-align: center; 
+	  /*新版本语法*/
+	  -webkit-align-items: center;
+	  align-items: center;
+
+	  /*水平居中*/
+	  /*老版本语法*/
+	  -webkit-box-pack: center; 
+	  -moz-box-pack: center; 
+	  /*混合版本语法*/
+	  -ms-flex-pack: center; 
+	  /*新版本语法*/
+	  -webkit-justify-content: center;
+	  justify-content: center;
+
+	  margin: 0;
+	} 
+/*实现文本垂直居中*/
+	.box div {
+	  display: -webkit-box; 
+	  display: -moz-box;
+	  display: -ms-flexbox;
+	  display: -webkit-flex;
+	  display: flex;
+	 
+	  -webkit-box-align: center; 
+	  -moz-box-align: center;
+	  -ms-flex-align: center;
+	  -webkit-align-items: center;
+	  align-items: center;
+
+	  height: 10rem;
+	  border: 1px solid #ccc;
+	  word-break: break-all;
+	}
+	.box2{
+		display: flex;
+                         justify-content: center;/*水平居中*/
+                         align-items: center;/*垂直居中,这样写了box-flex:1的孩子就会垂直居中*/
+                         margin: 0 auto;
+
+	}
+	.box3{
+	     display: -webkit-flex;
+                  display: flex;
+                  vertical-align: middle;
+	}
+	.box3 h1{
+                  -webkit-box-flex: 1;
+                  box-flex: 1;
+                  display: table-cell;
+
+	}
+	.box,.box2,.box3{
+                         width: 1200px;
+                         height: 300px;
+                         border: 5px solid #333;
+
+	}
+             .is-Table { 
+		display: table;
+                         width: 1200px;
+                         height: 300px;
+                         border: 5px solid #333;
+		 }   
+	 .Table-Cell {   
+		  display: table-cell;   
+		  vertical-align: middle;
+	}   
+	 .Center-Block {   
+	    width: 50%;
+	    margin: 0;   
+	}  
+</style>
+</head>
+
+<body>
+
+<div class="box">
+	<div>w23ew23fefefeferfreferferferfere</div><div>e32eferrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr32e32</div>
+</div>
+<div class="box2">
+	CSS3中利用Flexbox实现DIV标签元素垂直居中
+</div>
+<div class="box3">
+            <h1>CSS3中利用Flexbox实现DIV标签元素垂直居中-css3教程-Css教程-壹...</h1>
+	<h1>CSS3中利用Flexbox实现DIV标签元素垂直居中-css3教程-Css教程-壹...</h1>
+</div>
+
+<div class=" is-Table">  
+  <div class="Table-Cell">  
+    <div class="Center-Block">  
+      VFVFGVFVFGBGdwedwedewdewdedwedwedew
+    </div>  
+  </div>  
+</div>  
+
+</body>
+</html>

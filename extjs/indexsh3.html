@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>ExtDemo1</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
+	<script type="text/javascript" src="extjs/ext-all-debug.js"></script>
+	<script type="text/javascript">
+		Ext.require([
+    'Ext.data.*',
+    'Ext.grid.*',
+    'Ext.tree.*'
+		]);
+    var myPanel=null;
+
+		Ext.onReady(function() {
+		    Ext.QuickTips.init();
+
+		    Ext.define('Post', {
+		        extend: 'Ext.data.Model',
+		        idProperty: 'postid',
+		        fields: [{
+		            name: "title",
+		            convert: undefined
+		        }, {
+		            name: "threadid",
+		            convert: undefined
+		        }, {
+		            name: "username",
+		            convert: undefined
+		        }, {
+		            name: "userid",
+		            convert: undefined
+		        },  {
+		            name: "dateline",
+		            type: 'date',
+		            dateFormat: 'timestamp'
+		        }, {
+		            name: "postid",
+		            convert: undefined
+		        }, {
+		            name: "forumtitle",
+		            convert: undefined
+		        }, {
+		            name: "forumid",
+		            convert: undefined
+		        }, {
+		            name: "replycount",
+		            type: 'int',
+		            convert: undefined
+		        }, {
+		            name: "lastpost",
+		            dateFormat: 'timestamp',
+		            convert: undefined
+		        }, {
+		            name: "excerpt",
+		            convert: undefined
+		        }]
+		    });
+
+		    function renderTitle(value, p, record) {
+            return value?'<a href="javascript:showPanel(\''+value+'\');" >'+value+'</a>': ''
+
+		    }
+		  
+
+		    var store = Ext.create('Ext.data.TreeStore', {
+		        model: 'Post',
+		        proxy: {
+		            type: 'ajax',
+		            reader: 'json',
+		            url: 'data2.json'
+		        },
+		        lazyFill: true
+		    });
+
+		    Ext.create('Ext.tree.Panel', {
+		        title: 'Forum Folder Summary',
+		        width: 600,
+		        height: 400,
+		        renderTo: Ext.get('dd'),
+		        collapsible: true,
+		        loadMask: true,
+		        useArrows: true,
+		        rootVisible: false,
+		        store: store,
+		        animate: false,
+		        plugins: [{
+		            ptype: 'bufferedrenderer'
+		        }],
+		        columns: [{
+		            xtype: 'treecolumn', //this is so we know which column will show the tree
+		            text: 'Forum',
+		            flex: 2.5,
+		            sortable: true,
+		            dataIndex: 'forumtitle'
+		        },{
+		            text: 'User',
+		            flex: 1,
+		            dataIndex: 'username',
+		            sortable: true
+		        }, {
+		            text: 'Title',
+		            flex: 2,
+		            dataIndex: 'title',
+		            renderer: renderTitle
+		        }]
+		    });
+		});
+
+    function showPanel(v){
+	    	//myPanel.show();
+	      myPanel = new Ext.Panel({  
+			   renderTo:Ext.getBody(),  
+			   title:'可拖动Panel',  
+			   x:100,
+			   y:100,  
+			   width:500,
+			   height:150, 
+			   minWidth:500,
+			   minHeight:150,
+			   resizable:true,
+         expandable:true, 
+			   floating:true,  
+			   //圆角  
+			   frame:true,  
+			   //拖动  
+			   draggable:{  
+			    //拖动时不虚线显示原始位置  
+			    insertProxy:false,
+			    getDragEl : function(e){
+				        var ghost = this.panelProxy.ghost;
+				        if (ghost) {
+				        	this.x=ghost.el.dom.style.left,
+				        	this.y=ghost.el.dom.style.top;
+
+				            return ghost.el.dom;
+				        }
+				    },  
+			    endDrag:function(e){  
+			    	this.panelProxy.hide();
+            this.panel.saveState();
+			     	console.log(this.x+';'+this.y)
+			    }  
+			   },  
+			   tools:[  
+			    {id:'close'}
+			      
+			   ],  
+			   html:v 
+			  });
+			  myPanel.show();    	
+	  }
+	</script>
+</head>
+<body>
+<div id="dd" style="border:1px solid #ddd;width:500px;height:500px;"></div>
+</body>
+</html>

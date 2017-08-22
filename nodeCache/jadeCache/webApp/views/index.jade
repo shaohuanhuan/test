@@ -1,0 +1,8 @@
+extends layout
+block css
+  link(rel='stylesheet', href='/style/index.css?v=#{version}')
+block content
+  div.container
+
+append scripts
+  script(src='/javascripts/index.js?v=#{version}')

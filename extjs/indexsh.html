@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>ExtDemo1</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
+	<script type="text/javascript" src="extjs/ext-all-debug.js"></script>
+
+		<script type="text/javascript">
+		
+		 Ext.onReady(function(){  
+			    var myPanel = new Ext.Panel({  
+			   renderTo:Ext.getBody(),  
+			   title:'可拖动Panel',  
+			   x:100,
+			   y:100,  
+			   width:500,
+			   height:150, 
+			   minWidth:500,
+			   minHeight:150,
+			   resizable:true,
+          expandable:true, 
+			   floating:true,  
+			   //圆角  
+			   frame:true,  
+			   //拖动  
+			   draggable:{  
+			    //拖动时不虚线显示原始位置  
+			    insertProxy:false,
+			    getDragEl : function(e){
+				        var ghost = this.panelProxy.ghost;
+				        if (ghost) {
+				        	this.x=ghost.el.dom.style.left,
+				        	this.y=ghost.el.dom.style.top;
+
+				            return ghost.el.dom;
+				        }
+				    },  
+			    endDrag:function(e){  
+			    	this.panelProxy.hide();
+            this.panel.saveState();
+			     	console.log(this.x+';'+this.y)
+			    }  
+			   },  
+			   tools:[  
+			    {id:'close'},  
+			    {id:'minimize'},  
+			    {id:'maximize'},  
+			    {id:'restore'},  
+			    {id:'gear'},  
+			    {id:'pin'},  
+			    {id:'unpin'},  
+			    {id:'right'},  
+			    {id:'left'},  
+			    {id:'up'},  
+			    {id:'down'},  
+			    {id:'refresh'},  
+			    {id:'minus'},  
+			    {id:'plus'},  
+			    {id:'help'},  
+			    {id:'search'},  
+			    {id:'save'},  
+			    {id:'print'}  
+			      
+			   ],  
+			   html:"从左右到依次为：<br />" +  
+			     "close,minimize,maximize,restore,gear,pin,unpin,right,left,up,down,<br />" +  
+			     "<div style='float:right'>refresh,minus,plus,help,search,save,pring</div>"  
+			  });  
+ });  
+		
+		</script>
+</head>
+<body></body>
+</html>

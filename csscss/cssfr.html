@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0; padding: 0;
+}
+.grid {
+  display: grid;
+  /*grid-template-columns: repeat(4, 25%);*/
+  /*grid-template-columns: repeat(4, calc((100% - 10px * 3)/ 4));*/
+  /*grid-gap: 10px;*/
+
+  /*grid-template-columns: repeat(4, 1fr);*/
+  /*grid-column-gap: 10px;*/
+  /* demo 看起来没啥变化，四栏等宽（就是 1/4 或者是 25%）。但是，注意！横向的 overflow 消失了。每个栏的宽度设置为 1fr 后，三个 10px 的间隙首先从总宽度减去，再计算每个栏的宽度！
+   */
+  
+  grid-template-columns: 250px repeat(12, 1fr);
+  grid-column-gap: 10px;
+
+  background-color: rgba(255,0,0,.7);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.column {
+  font-family: 'Output Sans', -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", "Roboto", "Oxygen", 
+    "Ubuntu", "Cantarell", "Fira Sans", 
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  background-color: rgba(0,0,0,.2);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+  <div class="column"></div>
+  <div class="column"></div>
+  <div class="column"></div>
+  <div class="column"></div>
+</div>
+</body>
+</html>

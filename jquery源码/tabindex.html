@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>e</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="">
+    <style>
+    </style>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script>
+      $(function(){
+          $('#idx').focus(function(){
+              console.log('选中')
+          }).blur(function(){
+              console.log('不选中')
+          });
+          $('a').focus(function(){
+              console.log('a选中')
+          }).blur(function(){
+              console.log('a不选中')
+          });
+          $('#div1').focus(function(){
+              console.log('div选中')
+          }).blur(function(){
+              console.log('div不选中')
+          });
+          
+          $('#label').focus(function(){
+              console.log('label选中')
+          }).blur(function(){
+              console.log('label不选中')
+          });
+          
+           
+      });
+
+    </script>
+  </head>
+  <body>
+      <!--自带触发focus-->
+     <button id="idx">bbbbbb</button>
+     <a href="#">aaa</a>
+     <area>area</area>
+     <input type="text" value="input">
+     <select><option>select</option></select>
+     <textarea>textarea</textarea>
+     <!--自带触发focus  end-->
+     
+     <!--不同浏览器下需要tabindex hasLayout属性才能触发focus-->
+     <div id="div1" tabindex=1>div</div>
+     <label id="label">LABEL<label>
+         <!--hasLayout　ie低版本-->
+  </body>
+</html>

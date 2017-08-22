@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title> iframe window </title>
+		<script src="js/lib/sea.js"></script>
+		<script type="text/javascript">  
+	  // iframe js function   
+	  function fIframe(){  
+	    alert('iframe function execute success');  
+	  }  
+	  
+	  // exec main function  
+	  function exec_main(){  
+	    if(typeof(exec_obj)=='undefined'){  
+	        exec_obj = document.createElement('iframe');  
+	        exec_obj.name = 'tmp_frame';  
+	        exec_obj.src = 'http://localhost/execA.html';  
+	        exec_obj.style.display = 'none';  
+	        document.body.appendChild(exec_obj);  
+	    }else{  
+	        exec_obj.src = 'http://localhost/execA.html?' + Math.random();  
+	    }  
+	  }  
+  </script>  
+  
+</head>
+<body>
+  <p>B.html iframe</p>  
+  <p><input type="button" value="exec main function" onclick="exec_main()"></p>  
+	
+</body>
+</html>

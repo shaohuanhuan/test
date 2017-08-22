@@ -1,0 +1,232 @@
+1：var map = new AMap.Map('mapContainer');--新建地图
+2： //设置城市
+    map.setCity(cityName);
+3：function initialize(){
+	  var position=new AMap.LngLat(116.397428,39.90923);
+	  var mapObj=new AMap.Map("container",{
+	  view: new AMap.View2D({//创建地图二维视口
+	  center:position,//创建中心点坐标
+	  zoom:14, //设置地图缩放级别
+	  rotation:0 //设置地图旋转角度
+	 }),
+	 lang:"zh_cn"//设置地图语言类型，默认：中文简体
+	});//创建地图实例
+	}
+4:search中国返回的省市的center===c对象，是高德自己的对象，不能用json直接返回的，要转化    
+5:  var lineArr = [
+      ['75.757904', '38.118117'],
+      ['117.375719', '24.598057']
+    ];
+var polyline = new AMap.Polyline({
+      path: lineArr,            // 设置线覆盖物路径
+      strokeColor: '#3366FF',   // 线颜色
+      strokeOpacity: 1,         // 线透明度
+      strokeWeight: 2,          // 线宽
+      strokeStyle: 'solid',     // 线样式
+      strokeDasharray: [10, 5], // 补充线样式
+      geodesic: true            // 绘制大地线
+    });
+
+    polyline.setMap(map);
+6:加载完毕
+map.on( 'complete', function() {
+        document.getElementById('info').innerHTML = "地图图块加载完毕！当前地图中心点为：" + map.getCenter();
+    });
+7：
+//在地图中添加MouseTool插件
+    map.plugin(["AMap.MouseTool"], function() {
+        var mouseTool = new AMap.MouseTool(map);
+        //鼠标工具插件添加draw事件监听
+        AMap.event.addListener(mouseTool, "draw", function callback(e) {
+            var eObject = e.obj;//obj属性就是鼠标事件完成所绘制的覆盖物对象。
+        });
+
+        mouseTool.measureArea();  //调用鼠标工具的面积量测功能
+    });
+8：窗口
+//地图中添加地图操作ToolBar插件
+    map.plugin(["AMap.ToolBar"], function() {
+        var toolBar = new AMap.ToolBar();
+        map.addControl(toolBar);
+    });
+
+    //在指定位置打开信息窗体
+    function openInfo() {
+        //构建信息窗体中显示的内容
+        var info = [];
+        info.push("<div><div><img style=\"float:left;\" src=\" http://webapi.amap.com/images/autonavi.png \"/></div> ");
+        info.push("<div style=\"padding:0px 0px 0px 4px;\"><b>高德软件</b>");
+        info.push("电话 : 010-84107000   邮编 : 100102");
+        info.push("地址 : 北京市望京阜通东大街方恒国际中心A座16层</div></div>");
+
+        infoWindow = new AMap.InfoWindow({
+            content: info.join("<br/>")  //使用默认信息窗体框样式，显示信息内容
+        });
+        infoWindow.open(map, [116.480983, 39.989628]);
+
+    }
+9:右键出现菜单
+    //地图中添加地图操作ToolBar插件
+    map.plugin(["AMap.ToolBar"], function() {
+        var toolBar = new AMap.ToolBar();
+        map.addControl(toolBar);
+    });
+
+    //创建右键菜单
+    var contextMenu = new AMap.ContextMenu();
+    //右键放大
+    contextMenu.addItem("放大一级", function() {
+        map.zoomIn();
+    }, 0);
+    //右键缩小
+    contextMenu.addItem("缩小一级", function() {
+        map.zoomOut();
+    }, 1);
+    //右键显示全国范围
+    contextMenu.addItem("缩放至全国范围", function(e) {
+        map.setZoomAndCenter(4, [108.946609, 34.262324]);
+    }, 2);
+    //右键添加Marker标记
+    contextMenu.addItem("添加标记", function(e) {
+        var marker = new AMap.Marker({
+            map: map,
+            position: contextMenuPositon, //基点位置
+            icon: "http://webapi.amap.com/images/marker_sprite.png", //marker图标，直接传递地址url
+            offset: {x: -8, y: -34} //相对于基点的位置
+        });
+    }, 3);
+
+
+
+
+
+
+
+"富阳区":[119.949986,30.048221],
+                "余杭区":[120.301205,30.418999],
+                "拱墅区":[120.205074,30.26196],
+                "江干区":[120.205074,30.26196],
+                "下城区":[120.173489,30.275007],
+                "萧山区":[120.277172,30.162273],
+                "滨江区":[120.209881,30.204415],
+                "上城区":[120.171429,30.247725]
+
+    //地图绑定鼠标右击事件——弹出右键菜单
+    map.on( 'rightclick', function(e) {
+        contextMenu.open(map, e.lnglat);
+        contextMenuPositon = e.lnglat;
+    });
+10：  信息框里有搜索的
+   var infowindow;
+      var infoWindowContent = '<div class="infowindow-content">' +
+          '<div class="amap-info-header">方恒国际中心</div>' +
+          '<div class="amap-info-body">阜通东大街6号</div>' +
+          '</div>';
+      map.plugin('AMap.AdvancedInfoWindow', function() {
+          infowindow = new AMap.AdvancedInfoWindow({
+            panel: 'panel',
+            placeSearch:false,
+            asOrigin:true,
+            asDestination:false,
+            content: infoWindowContent
+          });
+          infowindow.open(map, [116.481488,39.990464]);
+      });
+
+11：搜索
+AMap.service(["AMap.PlaceSearch"], function() {
+        var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+            pageSize:5,
+            pageIndex:1,
+            city:"021",
+            map: map,
+            panel: "result"
+        });
+        
+        placeSearch.search('酒店');
+    });
+12：麻点图
+ var tipMarker;
+    map.plugin('AMap.PlaceSearchLayer', function() {
+        var searchLayer = new AMap.PlaceSearchLayer({
+            keywords: '超市'
+        });
+        searchLayer.setMap(map);
+        //搜索图层查询
+        AMap.event.addListener(searchLayer, 'complete', function(data) {
+            if (data.type === 'complete') {
+                AMap.event.addListener(searchLayer, 'click', function(data) {
+                    var info = [];
+                    info.push('<h3><font color="#3366FF">' + data.content[0].name + '</font></h3><hr />');
+                    //添加信息的函数
+                    function addInfo(info, callback) {
+                        map.plugin('AMap.PlaceSearch', function() {
+                            var ms = new AMap.PlaceSearch({extensions: 'all'});
+                            ms.getDetails(data.content[0].id);
+                            AMap.event.addListener(ms, 'complete', function(data) {
+                                if (data['poiList']['pois'].length) {
+
+                                    info.push('<div>地址：' + data.poiList['pois'][0].address + '</div>');
+                                    info.push('<div>类型：' + data.poiList['pois'][0].type + '</div>');
+                                }
+                                return callback(info);
+                            });
+                        });
+                    }
+
+                    addInfo(info, function(arr) {
+                        var infoWin = new AMap.InfoWindow({
+                            offset: new AMap.Pixel(0, -2),
+                            content: arr.join(''),
+                            closeWhenClickMap: true
+                        });
+
+                        infoWin.open(map, data.lnglat);
+                    });
+
+                });
+            }
+        });
+        //添加mouseover监听
+        AMap.event.addListener(searchLayer, 'mouseover', function(poi) {
+            //清除marker
+            if (tipMarker) {
+                tipMarker.setMap(null);
+            }
+            //绘制tip
+            var position = poi.lnglat;
+            var name = poi.content[0].name;
+            var controlUI = document.createElement("DIV");
+            controlUI.style.width = 15 * name.length + 'px';
+            controlUI.style.lineHeight = '25px';
+            controlUI.style.height = '25px';
+            controlUI.style.backgroundColor = '#fff';
+            controlUI.style.borderRadius = '5px';
+            controlUI.style.boxShadow = ' 0 3px 14px rgba(0,0,0,.5)';
+            controlUI.style.textAlign = 'center';
+            controlUI.style.zIndex = '300';
+            controlUI.innerHTML = name;
+            tipMarker = new AMap.Marker({
+                position: position,
+                map: map,
+                content: controlUI
+            });
+        });
+        //鼠标不在热点上移除tip
+        AMap.event.addListener(searchLayer, 'mouseout', function() {
+            if (tipMarker) {
+                tipMarker.setMap(null);
+            }
+        });
+
+    });
+13：步行
+ AMap.service(["AMap.Walking"], function() {        
+		        MWalk = new AMap.Walking(); //构造路线导航类 
+		        //根据起终点坐标规划步行路线
+		        MWalk.search(start_xy, end_xy, function(status, result){
+		        	if(status === 'complete'){
+		        		walk_routeCallBack(result);
+		        	}
+		        }); 
+		    });

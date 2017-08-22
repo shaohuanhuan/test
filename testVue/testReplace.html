@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue.js tree-view demo</title>
+    <style>
+      body {
+        font-family: Menlo, Consolas, monospace;
+        color: #444;
+      }
+      a{
+        float:left;
+        display:block;
+        margin-right:20px;
+        list-style:none;
+      }
+      .ui-star{
+        float:left;
+        background:url(1.jpg);
+        background-position: -660px -274px;
+        background-size:120px; 
+        width:29px;
+        height:29px;
+      }
+      .ui-star-checked{
+        background-position: 0 0;
+      }
+      input[type="radio"]{
+        opacity:0;
+      }
+    </style>
+    <script src="dist/vue.js"></script>
+  </head>
+  <body>
+    <!--1<div id="replace"></div>-->
+
+    <!--2<ul id="list-example">
+      <user-profile v-repeat="users"></user-profile>
+    </ul>-->
+    
+
+    <!--3<div id="demo">
+      {{message}}
+      <input v-model="message">
+    </div>-->
+
+    <!--4<child msg="hello!"></child>-->
+
+    <!--5<script type="text/x-template" id="grid-template">
+      <a href="javascript:;" v-repeat="key:columns"  v-on="click:showNum(key)">{{key}}</a>
+      <div>{{key}}</div>
+    </script>
+
+    <div id="demo">
+      <user-profile columns="{{gridColumns}}"></user-profile>
+    </div> -->
+    
+    <div id="demo">
+      <label class="ui-star" for="star1">
+        <input type="radio" name="picked" value="1" id="star1" v-model="picked" v-on="click:do(this)">
+      </label>
+      <label class="ui-star" for="star2" >
+        <input type="radio" name="picked" value="2" id="star2" v-model="picked" v-on="click:do(this)">
+      </label>
+      <label class="ui-star" for="star3">
+        <input type="radio" name="picked" value="3" id="star3" v-model="picked" v-on="click:do(this)">
+      </label>
+      <label class="ui-star" for="star4">
+        <input type="radio" name="picked" value="4" id="star4" v-model="picked" v-on="click:do(this)">
+      </label>
+      <label class="ui-star" for="star5">
+        <input type="radio" name="picked" value="5" id="star5" v-model="picked" v-on="click:do(this)"> 
+      </label>
+      {{picked}}
+    </div>
+    <script src="testReplace.js"></script>
+  </body>
+</html>

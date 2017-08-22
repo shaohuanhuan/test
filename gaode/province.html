@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>地理编码</title>
+
+</head>
+<body>
+<div id="graphic" class="col-md-8">
+    <div id="main" class="main" style="width:1920px;height:1000px;"></div>
+</div>
+
+<script src="js/echarts.js"></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+//路径配置
+  require.config({
+      paths: {
+          echarts: 'js/dist'
+      }
+  });
+  // 使用
+  require([
+          'echarts',
+          'echarts/dark',
+          'echarts/chart/line',
+          'echarts/chart/bar',
+          'echarts/chart/scatter',
+          'echarts/chart/k',
+          'echarts/chart/pie',
+          'echarts/chart/radar',
+          'echarts/chart/force',
+          'echarts/chart/chord',
+          'echarts/chart/gauge',
+          'echarts/chart/funnel',
+          'echarts/chart/eventRiver',
+          'echarts/chart/venn',
+          'echarts/chart/treemap',
+          'echarts/chart/tree',
+          'echarts/chart/wordCloud',
+          'echarts/chart/heatmap',
+          'echarts/chart/map',
+          'echarts/chart/line'
+      ],
+      function (ec,theme) {
+        areaData(ec,theme);  
+  });
+function areaData (ec,theme) {
+     // 基于准备好的dom，初始化echarts图表
+  var myChart = ec.init(document.getElementById('main'),theme); 
+  var  cityMap = {
+    "北京市": "110100",
+    "天津市": "120100",
+    "上海市": "310100",
+    "重庆市": "500100",
+    "杭州市": "330100"
+};
+
+
+var curIndx = 0;
+var mapType = [];
+var mapGeoData = require('echarts/util/mapData/params');
+console.log(mapGeoData)
+for (var city in cityMap) {
+    mapType.push(city);
+    // 自定义扩展图表类型
+    
+    var b={
+        getGeoJson: (function (c) {
+            var geoJsonName = cityMap[c];
+            return function (callback) {
+                $.getJSON('geoJson/' + geoJsonName + '.json', callback);
+            }
+        })(city)
+    }
+    console.log(b)
+    mapGeoData.params[city] = b;
+}
+
+/*var ecConfig = require('echarts/config');
+var zrEvent = require('zrender/tool/event');
+document.getElementById('main').onmousewheel = function (e){
+    var event = e || window.event;
+    curIndx += zrEvent.getDelta(event) > 0 ? (-1) : 1;
+    if (curIndx < 0) {
+        curIndx = mapType.length - 1;
+    }
+    var mt = mapType[curIndx % mapType.length];
+    option.series[0].mapType = mt;
+    option.title.subtext = mt + ' （滚轮或点击切换）';
+    myChart.setOption(option, true);
+    zrEvent.stop(event);
+};
+myChart.on(ecConfig.EVENT.MAP_SELECTED, function (param){
+    curIndx++;
+    var mt = mapType[curIndx % mapType.length];
+    option.series[0].mapType = mt;
+    option.title.subtext = mt + ' （滚轮或点击切换）';
+    myChart.setOption(option, true);
+});*/
+option = {
+    title: {
+        text : '杭州市理疗师分布',
+        link : '',
+        subtext : '壹康复'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: '{b}'
+    },
+    /*dataRange: {
+        min : 0,
+        max : 100,
+        calculable : true,
+        color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+        textStyle:{
+            color:'#fff'
+        }
+    },
+   series : [
+        {
+            name: '全国344个主要城市（县）地图',
+            type: 'map',
+            mapType: '杭州市',
+            selectedMode : 'single',
+            itemStyle:{
+                normal:{label:{show:true}},
+                emphasis:{label:{show:true}}
+            },
+            data:[]
+        }
+    ]*/
+    series : [
+        {
+            name: '中国',
+            type: 'map',
+            mapType: '杭州市',
+            
+            data : [],
+            markPoint : {
+                symbol:'emptyCircle',
+                symbolSize : function (v){
+                    return 10 + v/100
+                },
+                effect : {
+                    show: true,
+                    shadowBlur : 0
+                },
+                itemStyle:{
+                    normal:{label:{show:true}},
+                    emphasis:{label:{show:true}}
+                },
+                
+                data : [
+                    {name: "玄月", value: ''},
+                    {name: "乐乐", value: ''},
+                    {name: "靖远", value: ''},
+                    {name: "江干区", value: ''},
+                    {name: "下城区", value: ''},
+                    {name: "萧山区", value: ''},
+                     {name: "滨江区", value: ''},
+                    {name: "上城区", value: ''}
+                ]
+            },
+            geoCoord: {
+                "玄月":[119.949986,30.048221],
+                "乐乐":[120.301205,30.418999],
+                "靖远":[120.205074,30.26196],
+                "江干区":[120.205074,30.26196],
+                "下城区":[120.173489,30.275007],
+                "萧山区":[120.277172,30.162273],
+                "滨江区":[120.209881,30.204415],
+                "上城区":[120.171429,30.247725]
+                
+            }
+        }
+    ]
+};
+                    
+                    
+     // 为echarts对象加载数据 
+     myChart.setOption(option);    
+ }
+
+   
+</script>
+</body>
+</html>						
+
+	

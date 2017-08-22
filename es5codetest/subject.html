@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HTML5/</title>
+
+<!--主要样式-->
+
+</head>
+
+<body>
+<div>
+var a = 1;
+function b() {
+alert(a);
+a = 10;
+function a() {}
+}
+b();// 
+怎么破？？
+鲍魏(497162120)  16:25:46
+我知道程序会先执行方法定义 不过a方法在里面 应该不会执行啊
+鲍魏(497162120)  16:25:46
+js在执行的时候 会先执行全局变量 和方法定义 
+鲍魏(497162120)  16:27:11
+程序调用b的方法的时候  会先执行里面的方法定义  再执行从头开始往下执行代码
+
+var a=1;
+function b(){ 
+  var a;
+  a=function(){
+  }
+  alert(a);
+  a=10;
+}b();
+鲍魏(497162120)  16:28:11
+这个就不会先执行了
+这个就是 程序变量方法 和定义方法的区别
+一个可以再任何位置调用 一个要先定义才能调用 就是因为这个原因
+ 
+鲍魏(497162120)  16:30:14
+var a=function(){}这种叫什么来着  
+function  a(){}还有这种
+反正就是这二个的区别前面这个 只能在后面才能调用a(), 但是后面这个即使放前面 也可以调用方法  
+
+鲍魏(497162120)  16:31:40
+就是因为js在执行的时候 会执行先执行这个方法定义  专业术语我不知道怎么描述 
+
+a = 10;
+(function a(){
+a = 1;
+alert(a);// ？
+})();
+
+function a(i) {
+alert(i);// ？
+var i = 1;
+alert(i);// ？
+};
+a(10); 
+第一个和这个是一个道理。。函数提升
+
+
+百度下函数、变量提升。顺便看下，函数声明、函数表达式、匿名函数
+
+
+一个叫函数声明 一个叫函数表达式 哈哈
+李志雄<13738292770>  16:58:09
+http://www.cnblogs.com/libin-1/p/6101185.html 
+
+匿名函数 自执行
+
+function Foo() {
+    getName = function () { alert (1); };
+    return this;
+}
+Foo.getName = function () { alert (2);};
+Foo.prototype.getName = function () { alert (3);};
+var getName = function () { alert (4);};
+function getName() { alert (5);}
+ 
+//请写出以下输出结果：
+Foo.getName();
+getName();
+Foo().getName();
+getName();
+new Foo.getName();
+new Foo().getName();
+new new Foo().getName();
+
+</div>
+
+</body>
+</html>

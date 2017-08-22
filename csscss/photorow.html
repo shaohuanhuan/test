@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<style>
+    img{
+        vertical-align: middle;
+    }
+   .box{
+        width: 1000px;
+        display: flex;
+        flex-wrap: wrap;
+   }
+  .box img {
+        height: 200px;
+        flex-grow: 1;/*图片水平拉宽 占满一行*/
+        object-fit: cover; /*图片不拉伸，但是会被剪裁*/
+  }
+  .box2{
+        width: 1000px;
+        display: flex;
+        flex-wrap: wrap;
+  }
+  .box2::after {/*处理最后一行*/
+  content: '';
+  flex-grow: 999999999;
+}
+  .box2 div{
+      height: 200px;
+      flex-grow: 1;/*均分一行*/
+  }
+  .box2 img{
+      max-width: 100%;/*width:100% 和max-width:100% min-width:100% 效果不一样*/
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+    .box2 div:nth-last-child(5),
+    .box2 div:nth-last-child(4),
+    .box2 div:nth-last-child(3),
+    .box2 div:nth-last-child(2),
+    .box2 div:nth-last-child(1) {/*匹配作为父元素下的倒数第n个子元素*/
+        flex-grow: 0;/*像这里7个，最后多出一个，效果出在多出那个上，是nth-last-child(1)*/
+    }
+</style>
+</head>
+
+<body>
+<div>
+</div>
+<div class="box">
+   <img src="1.jpg" />
+   <img src="2.jpg" />
+   <img src="3.jpg" />
+   <img src="4.jpg" />
+   <img src="5.jpg" />
+   <img src="6.jpg" />
+   <img src="1.jpg" />
+   <img src="2.jpg" />
+</div> 
+<section class="box2">
+   <div>
+      <img src="1.jpg"/>
+   </div>
+   <div>
+      <img src="2.jpg"/>
+   </div>
+   <div>
+      <img src="3.jpg"/>
+   </div>
+   <div>
+      <img src="4.jpg"/>
+   </div>
+   <div>
+      <img src="5.jpg"/>
+   </div>
+   <div>
+      <img src="6.jpg"/>
+   </div>
+   <div>
+      <img src="1.jpg"/>
+   </div>
+   <div>
+      <img src="2.jpg"/>
+   </div>
+</section>
+
+作者：谢然
+链接：https://zhuanlan.zhihu.com/p/21974139
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+<meta name="viewport" content="width=device-width,height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>设备登录</title>
+
+
+<link rel="stylesheet" href="js/jquery.mobile-1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="js/jquery.mobile-1.4.4/jquery.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function() {
+	// disable ajax nav
+	$.mobile.ajaxEnabled=false;
+});
+</script>
+<script src="js/jquery.mobile-1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<!-- 
+        <script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyChASKpn4bv1hNDHYD8pQ69ynSGDTdXh8Q&sensor=true" ></script>
+
+ -->
+ 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SEMZwXi8fdZondil8lGqy8P5"></script>
+<script type="text/javascript" src="js/bmap.js"></script>
+<script type="text/javascript" src="js/ly.js"></script>
+<script type="text/javascript" src="js/cordova-1.5.0.js" ></script>
+<script type="text/javascript" src="js/websocket.js"></script>
+<script type="text/javascript">
+var deviceNm;
+var deviceId;
+var deviceType;
+var deviceGroup;
+var retMessage= "";
+$(window).unload=doClose;
+$(document).on("pageshow","#repairPage",function(){  
+	 doRefresh("mapA"); 
+   });	
+$(document).on("pageshow","#mapPage",function(){  
+	 doRefresh("mapB"); 
+  });   
+</script>
+</head>
+<body>
+
+
+   
+
+<!--登录 begin-->
+	<div data-role="page" id="login">
+		<div data-role="header" data-position="inline">
+		    <h1>设备登入</h1>
+		    
+			<a href="#" data-role="button" id="submit" onclick="doLoginVerify()">提交</a>
+			<a href="#"	data-role="button" id="reset" onclick="doRest()">重置</a>
+		</div>
+
+		<div data-role="content">
+			<div data-role="fieldcontain">
+				<label for="deviceName">设备名：</label> 
+				<input type="text" name="deviceNm" id="deviceNm"> 
+				<p>
+				<label for="pinCode">设备PIN码：</label>
+				<input type="password" name="devicePin" id="devicePin">
+			</div>
+		</div>
+
+
+		<div data-role="footer" data-id="myfooter" data-position="fixed">
+		</div>
+	</div>
+	<!--登录 end-->
+
+
+	<!--报修  begin-->
+	<div data-role="page" id="repairPage">
+		<div data-role="header" data-position="fixed">
+			<h1>报修</h1>
+			<label for="repairBtn">如设备故障点击该按钮，维修人员2小时内赶到</label> <a href="#"
+				id="repairBtn" data-role="button" onclick="doRepair();">报修</a> <a
+				href="#" id="logoutBtn2" data-role="button" onclick="doLogOutA();">退出</a>
+		</div>
+
+		<div id="mapA" data-role="content"
+			style="position: relative; height: 300px"></div>
+
+		<div data-role="footer" data-id="myfooterA" data-position="fixed">
+		</div>
+
+	</div>
+	<script type="text/javascript">
+	
+	</script>
+	<!--报修  end-->
+
+
+	<!--地图  begin-->
+	<div data-role="page" id="mapPage">
+		<div data-role="header" data-position="fixed">
+			<h1>地图</h1>
+			<a href="#" id="refreshBtn" data-role="button" onclick="doRefresh('mapB');">刷新</a>
+			<a href="#" id="logoutBtn" data-role="button" onclick="doLogOutB();">退出</a>
+		</div>
+
+		<div id="mapB" data-role="content"	style="position:relative;height:300px">
+
+		</div>
+
+		<div data-role="footer" data-id="myfooterB" data-position="fixed">
+		</div>
+
+	</div>
+	<!--地图  end-->
+	
+	
+ <!--dialog begin-->
+    <div data-role="dialog" id="infoDialog" data-title="提示信息">
+       <div data-role="content">
+           <div id="infoField" class="sure-1"></div>
+           <a href="#" class="sure-do" data-role="button" data-icon="delete" data-theme="b" data-rel="back">确定</a>          
+       </div>
+    </div>  
+    <!-- dialog end-->
+	
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>FrozenUI - 辅助类-test</title>
+    <meta name="Description" content="专注于移动web的UI框架，基于手机QQ规范" />
+    <meta name="Keywords" content="frozen，frozenui，frozenjs，forzen ui，forzen js" />
+    <meta name="author" content="fayching" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="">
+    <link rel="stylesheet" type="text/css" href="wnl.css">
+    <script src="jquery.js"></script>
+    <script>
+           
+      $(function() {
+       /* //var da = '<f:formatDate value="${now}" type="date" pattern="yyyy-MM-dd"/>';
+        var da = new Date();
+        //var dy='<f:formatDate value="${now}" type="date" pattern="yyyy"/>';
+        var dm = da.split('-')[1];
+        if(dm.substring(0,1)==0){
+          dm=da.split('-')[1].substring(1,2);
+        }
+        //var d2 = new Date(da.getFullYear(),da.getMonth()+1,1);
+        var d2 = new Date(dy,dm,1);
+        //var d_week = new Date(da.getFullYear(),da.getMonth(),1);
+        var d_week=new Date(dy,dm-1,1);
+        var d=d_week.getDay();
+        var lastd= (new Date(d2.getTime() - 1000 * 60 * 60 * 24)).getDate();
+        var lastday=lastd+1;
+        var y_m=dy+"年"+dm+"月";
+        $("#today_mon").html(y_m);
+        var m_sel=dm;
+        var y_sel=dy;
+        document.getElementById(y_sel).selected = true; 
+        document.getElementById(m_sel).selected = true; */
+        var da = '2015-04-05';
+        var dy='2015';
+        var dm = da.split('-')[1];
+        if(dm.substring(0,1)==0){
+          dm=da.split('-')[1].substring(1,2);
+        }
+        //var d2 = new Date(da.getFullYear(),da.getMonth()+1,1);
+        var d2 = new Date(dy,dm,1);
+        //var d_week = new Date(da.getFullYear(),da.getMonth(),1);
+        var d_week=new Date(dy,dm-1,1);
+        var d=d_week.getDay();
+        var lastd= (new Date(d2.getTime() - 1000 * 60 * 60 * 24)).getDate();
+        var lastday=lastd+1;
+        var y_m=dy+"年"+dm+"月";
+        initCal(d,lastday);
+        weekColor();
+        
+        for(var i=0;i<42;i++){
+        $("#GD"+i).hover(
+              function () {
+                $(this).addClass("bg-blue-hover");
+              },
+              function () {
+                $(this).removeClass("bg-blue-hover");
+              }
+            );
+        }
+        
+      });
+
+      function weekColor() {
+        var noRecord=10;
+        if(noRecord==0){
+          for ( var i = 0; i < 42; i++) {
+            $("#GD" + i).css(
+                "background"   ,"url(dot.png) no-repeat 39px 0px"
+              );
+            }
+          alert("本月无排班");
+        }else{
+        for ( var i = 0; i < 42; i++) {
+          if ($("#SD" + i).val() == -1) {
+            $("#GD" + i).css(
+              "background"   ,"url(quan_ico.png) no-repeat 39px 0px"
+            );
+            /* $("#FJ" + i).html("休"); */
+          }else{
+            $("#GD" + i).css(
+                "background"   ,"url(dot.png) no-repeat 39px 0px"
+              );
+          }
+        }
+        }
+      }
+      function initCal(d,lastday){
+        var i = 1;
+        var dlist=[31];
+        if (d == 0) {
+          $("#LD0").html(i);
+          $("#SD0").val(dlist[0]);
+          for ( var j = 1,m=2; j < 42,m<lastday; j++,m++) {
+            $("#LD" + j).html(m);
+            $("#SD" + j).val(dlist[m-1]);
+          }
+          
+        } else if (d == 1) {
+          
+          $("#LD1").html(i);
+          $("#SD1").val(dlist[0]);
+          for ( var j = 2,m=2; j < 42,m<lastday; j++,m++) {
+            $("#LD" + j).html(m);
+            $("#SD" + j).val(dlist[m-1]);
+          }
+        } else if (d == 2) {
+          $("#LD2").html(i);
+          $("#SD2").val(dlist[0]);
+          for ( var j = 3,m=2; j < 42,m<lastday; j++,m++) {
+            $("#LD" + j).html(j - 1);
+            $("#SD" + j).val(dlist[m-1]);
+          }
+        } else if (d == 3) {
+          $("#LD3").html(i);
+          $("#SD3").val(dlist[0]);
+          //$("#LD3").css({"color":"red"},{"font-size":"10em"});
+          for ( var j = 4,m=2; j < 42,m<lastday; j++,m++) {
+            $("#LD" + j).html(m);
+            $("#SD" + j).val(dlist[m-1]);
+          }
+        } else if (d == 4) {
+          $("#LD4").html(i);
+          $("#SD4").val(dlist[0]);
+          for ( var j = 5,m=2; j < 42,m<lastday; j++,m++) {
+            $("#LD" + j).html(m);
+            $("#SD" + j).val(dlist[m-1]);
+          }
+        } else if (d == 5) {
+          $("#LD5").html(i);
+          $("#SD5").val(dlist[0]);
+          for ( var j = 6,m=2; j < 42,m<lastday; j++,m++) {
+            $("#LD" + j).html(m);
+            $("#SD" + j).val(dlist[m-1]);
+          }
+        } else if (d == 6) {
+          $("#LD6").html(i);
+          $("#SD6").val(dlist[0]);
+          for ( var j = 7,m=2; j < 42,m<lastday; j++,m++) {
+            $("#LD" + j).html(m);
+            $("#SD" + j).val(dlist[m-1]);
+          }
+        } else {
+        }
+      }
+  </script>
+     
+</head>
+<body>
+      <div class="calendar-container">
+        <table id="rl" width="715">
+          <thead> 
+              <tr id="week1_7">
+                <td class="red">周日</td>
+                <td>周一</td>
+                <td>周二</td>
+                <td>周三</td>
+                <td>周四</td>
+                <td>周五</td>
+                <td class="red">周六</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div id="GD0">
+                <input type="hidden" value="" id="s_month" name="s_month">
+                    <span class="dateNum" id="SD0"></span><span id="LD0"></span> <label
+                      id="FJ0"></label>
+                  </div></td>
+                <td><div id="GD1">
+                    <span class="dateNum" id="SD1"></span><span id="LD1"></span> <label
+                      id="FJ1"></label>
+                  </div></td>
+                <td><div id="GD2">
+                    <span class="dateNum" id="SD2"></span><span id="LD2"></span> <label
+                      id="FJ2"></label>
+                  </div></td>
+                <td><div id="GD3">
+                    <span class="dateNum" id="SD3"></span><span id="LD3"></span> <label
+                      id="FJ3"></label>
+                  </div></td>
+                <td><div id="GD4">
+                    <span class="dateNum" id="SD4"></span><span id="LD4"></span> <label
+                      id="FJ4"></label>
+                  </div></td>
+                <td><div id="GD5">
+                    <span class="dateNum" id="SD5"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD5"></span>
+                    <label id="FJ5" ></label>
+                  </div></td>
+                <td><div id="GD6">
+                    <span class="dateNum" id="SD6"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD6"></span>
+                    <label id="FJ6"></label>
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div id="GD7">
+                    <span class="dateNum" id="SD7"></span><span id="LD7"></span> <label
+                      id="FJ7"></label>
+                  </div></td>
+                <td><div id="GD8">
+                    <span class="dateNum" id="SD8"></span><span id="LD8"></span> <label
+                      id="FJ8"></label>
+                  </div></td>
+                <td><div id="GD9">
+                    <span class="dateNum" id="SD9"></span><span id="LD9"></span> <label
+                      id="FJ9"></label>
+                  </div></td>
+                <td><div id="GD10">
+                    <span class="dateNum" id="SD10"></span><span id="LD10"></span>
+                    <label id="FJ10"></label>
+                  </div></td>
+                <td><div id="GD11">
+                    <span class="dateNum" id="SD11"></span><span id="LD11"></span>
+                    <label id="FJ11"></label>
+                  </div></td>
+                <td><div id="GD12">
+                    <span class="dateNum" id="SD12"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD12"></span>
+                    <label id="FJ12"></label>
+                  </div></td>
+                <td><div id="GD13">
+                    <span class="dateNum" id="SD13"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD13"></span>
+                    <label id="FJ13"></label>
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div id="GD14">
+                    <span class="dateNum" id="SD14"></span><span id="LD14"></span>
+                    <label id="FJ14"></label>
+                  </div></td>
+                <td><div id="GD15">
+                    <span class="dateNum" id="SD15"></span><span id="LD15"></span>
+                    <label id="FJ15"></label>
+                  </div></td>
+                <td><div id="GD16">
+                    <span class="dateNum" id="SD16"></span><span id="LD16"></span>
+                    <label id="FJ16"></label>
+                  </div></td>
+                <td><div id="GD17">
+                    <span class="dateNum" id="SD17"></span><span id="LD17"></span>
+                    <label id="FJ17"></label>
+                  </div></td>
+                <td><div id="GD18">
+                    <span class="dateNum" id="SD18"></span><span id="LD18"></span>
+                    <label id="FJ18"></label>
+                  </div></td>
+                <td><div id="GD19">
+                    <span class="dateNum" id="SD19"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD19"></span>
+                    <label id="FJ19"></label>
+                  </div></td>
+                <td><div id="GD20">
+                    <span class="dateNum" id="SD20"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD20"></span>
+                    <label id="FJ20"></label>
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div id="GD21">
+                    <span class="dateNum" id="SD21"></span><span id="LD21"></span>
+                    <label id="FJ21"></label>
+                  </div></td>
+                <td><div id="GD22">
+                    <span class="dateNum" id="SD22" style=""></span><span
+                      id="LD22"></span> <label id="FJ22"></label>
+                  </div></td>
+                <td><div id="GD23">
+                    <span class="dateNum" id="SD23" style=""></span><span
+                      id="LD23"></span> <label id="FJ23"></label>
+                  </div></td>
+                <td><div id="GD24">
+                    <span class="dateNum" id="SD24" style=""></span><span
+                      id="LD24"></span> <label id="FJ24"></label>
+                  </div></td>
+                <td><div id="GD25">
+                    <span class="dateNum" id="SD25" style=""></span><span
+                      id="LD25"></span> <label id="FJ25"></label>
+                  </div></td>
+                <td><div id="GD26">
+                    <span class="dateNum" id="SD26"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD26"></span>
+                    <label id="FJ26"></label>
+                  </div></td>
+                <td><div id="GD27">
+                    <span class="dateNum" id="SD27"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD27"></span>
+                    <label id="FJ27"></label>
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div id="GD28">
+                    <span class="dateNum" id="SD28" style=""></span><span
+                      id="LD28"></span> <label id="FJ28"></label>
+                  </div></td>
+                <td><div id="GD29">
+                    <span class="dateNum" id="SD29" style=""></span><span
+                      id="LD29"></span> <label id="FJ29"></label>
+                  </div></td>
+                <td><div id="GD30">
+                    <span class="dateNum" id="SD30" style=""></span><span
+                      id="LD30"></span> <label id="FJ30"></label>
+                  </div></td>
+                <td><div id="GD31">
+                    <span class="dateNum" id="SD31" style=""></span><span
+                      id="LD31"></span> <label id="FJ31"></label>
+                  </div></td>
+                <td><div id="GD32">
+                    <span class="dateNum" id="SD32" style=""></span><span
+                      id="LD32"></span> <label id="FJ32"></label>
+                  </div></td>
+                <td><div id="GD33">
+                    <span class="dateNum" id="SD33"></span><span id="LD33"></span>
+                    <label id="FJ33"></label>
+                  </div></td>
+                <td><div id="GD34">
+                    <span class="dateNum" id="SD34"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD34"></span>
+                    <label id="FJ34"></label>
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div id="GD35">
+                    <span class="dateNum" id="SD35" style=""></span><span
+                      id="LD35"></span> <label id="FJ35"></label>
+                  </div></td>
+                <td><div id="GD36">
+                    <span class="dateNum" id="SD36"></span><span id="LD36"></span>
+                    <label id="FJ36"></label>
+                  </div></td>
+                <td><div id="GD37">
+                    <span class="dateNum" id="SD37"></span><span id="LD37"></span>
+                    <label id="FJ37"></label>
+                  </div></td>
+                <td><div id="GD38">
+                    <span class="dateNum" id="SD38"></span><span id="LD38"></span>
+                    <label id="FJ38"></label>
+                  </div></td>
+                <td><div id="GD39">
+                    <span class="dateNum" id="SD39"></span><span id="LD39"></span>
+                    <label id="FJ39"></label>
+                  </div></td>
+                <td><div id="GD40">
+                    <span class="dateNum" id="SD40"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD40"></span>
+                    <label id="FJ40"></label>
+                  </div></td>
+                <td><div id="GD41">
+                    <span class="dateNum" id="SD41"
+                      style="color: rgb(191, 64, 64);"></span><span id="LD41"></span>
+                    <label id="FJ41"></label>
+                  </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </body> 
+</html>

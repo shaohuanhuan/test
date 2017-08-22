@@ -1,0 +1,45 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>  
+<%  
+String path = request.getContextPath();  
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
+%>  
+  
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">  
+<html>  
+    <head>  
+        <script type="text/javascript" src="js/jquery-1.7.2.js"></script>  
+        <script type="text/javascript">  
+            $(function() {  
+                //为 <span> 元素绑定 click 事件  
+                $("span").click(function() {  
+                    $("#msg").html($("#msg").html() + "<p>内层span元素被单击</p>");  
+                });  
+                //为 Id 为 content 的 <div> 元素绑定 click 事件  
+                $("#content").click(function() {  
+                    $("#msg").html($("#msg").html() + "<p>外层div元素被单击</p>");  
+                });  
+                //为 <body> 元素绑定 click 事件  
+                $("body").click(function() {  
+                    $("#msg").html($("#msg").html() + "<p>body元素被单击</p>");  
+                });  
+            });  
+        </script>       
+          
+        <!-- CSS -->  
+        <style type="text/css">  
+            #content {  
+                background: #b17af5;  
+            }         
+        </style>  
+    </head>  
+    
+    <!-- HTML -->  
+    <body>  
+        <div id="content">  
+            外层div元素<br />  
+            <span style="background: silver;">内层span元素</span><br />  
+            外层div元素  
+        </div><br />  
+        <div id="msg"></div>  
+    </body>  
+</html>  

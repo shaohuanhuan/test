@@ -1,0 +1,38 @@
+
+        <!-- <template>
+          <el-table
+            :data="form.productNumPrices"
+            style="width: 100%"
+            max-height="250">
+            <el-table-column
+              prop="wholesaleStartNum"
+              label="起订量()">
+              <template scope="scope">
+              </template>
+            </el-table-column>
+            <el-table-column
+              label="价格">
+              <template scope="scope">
+                <el-input v-model="form.productNumPrices.price"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column
+              fixed="right"
+              label="">
+              <template scope="scope">
+                <el-button
+                  @click.native.prevent="deleteNum(scope.$index, form.productNumPrices)"
+                  type="text"> 删除</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </template> -->
+
+
+        
+    // deleteNum (index, $event) {
+    //   this.form.productNumPrices.splice(index, 1)
+    //   let p = $event.target.parentNode.parentNode
+    //   console.log(p)
+    //   p.parentNode.removeChild(p)
+    // },

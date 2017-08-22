@@ -1,0 +1,259 @@
+{
+    "code": 0,
+    "message": "成功",
+    "data": {
+        "page": 1,
+        "size": 10,
+        "keyword": null,
+        "paging": true,
+        "offset": 0,
+        "orderByClause": null,
+        "records": [
+            {
+                "orderCode": "151403981174775681",
+                "itemList": [
+                    {
+                        "itemId": "1101",
+                        "productId": "f190da4900f749b1a878447acf9d3320",
+                        "specKey": "Color:RED;Collection:50L;",
+                        "name": "Haier/海尔 EC6002-R@#$%%#%^%%% 电热水器60升储水式热水器洗澡速热50''家用",
+                        "img": "http://oss.aliyuncs.com/fshop/product/20161108111407606604543.jpg",
+                        "price": 4,
+                        "changePrice": 0,
+                        "quantity": 1,
+                        "discountAmount": 0,
+                        "amount": 0,
+                        "returnStatus": null,
+                        "returnQuantity": null,
+                        "linkUrl": "http://mobile.onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+                    },
+                    {
+                        "itemId": "1102",
+                        "productId": "f190da4900f749b1a878447acf9d3320",
+                        "specKey": "Color:RED;Collection:50L;",
+                        "name": "乱写专用",
+                        "img": "http://oss.aliyuncs.com/fshop/product/20161108111407606604543.jpg",
+                        "price": 333,
+                        "changePrice": 1,
+                        "quantity": 22,
+                        "discountAmount": 3,
+                        "amount": 0,
+                        "returnStatus": null,
+                        "returnQuantity": null,
+                        "linkUrl": "http://mobile.onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+                    },
+                    {
+                        "itemId": "1102",
+                        "productId": "f190da4900f749b1a878447acf9d3320",
+                        "specKey": "Color:RED;Collection:50L;",
+                        "name": "乱写专用乱写专用乱写专用乱写专用",
+                        "img": "http://oss.aliyuncs.com/fshop/product/20161108111407606604543.jpg",
+                        "price": 333,
+                        "changePrice": 1,
+                        "quantity": 22,
+                        "discountAmount": 3,
+                        "amount": 0,
+                        "returnStatus": null,
+                        "returnQuantity": null,
+                        "linkUrl": "http://mobile.onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+                    }
+                ],
+                "totalCost": 9.9,
+                "originalCost": 9.9,
+                "amount": 13.9,
+                "status": "2",
+                "refundTag": 0,
+                "systemOrderStatus": 0,
+                "source": "fshop",
+                "createTime": 1487703923000,
+                "payTime": null,
+                "deliverTime": null,
+                "finishTime": null,
+                "address": {
+                    "addressId": 119,
+                    "name": "李云锋",
+                    "countryId": null,
+                    "countryName": "China",
+                    "provinceName": "浙江省",
+                    "city": "杭州市",
+                    "postcode": "310012",
+                    "telephone": "15836548996",
+                    "detailAddress": "西湖区文三路",
+                    "defaultAddress": true
+                },
+                "shopId": "547de083067a4b04afb6ae3c48186688",
+                "shopName": "斑马的霰弹222",
+                "logistNum": "111222",
+                "logistCompany": "中国邮政快递国际",
+                "buyer": {
+                    "uid": "41fd16fb1a574122b623831726ef86b7",
+                    "nickname": "李云锋"
+                },
+                "commentStatus": 0,
+                "amountUnit": "US"
+            },
+            {
+                "orderCode": "151376615857723473",
+                "itemList": [
+                    {
+                        "itemId": "1100",
+                        "productId": "f190da4900f749b1a878447acf9d3320",
+                        "specKey": "Color:RED;Collection:50L;",
+                        "name": "Haier/海尔 EC6002-R@#$%%#%^%%% 电热水器60升储水式热水器洗澡速热50''家用",
+                        "img": "http://oss.aliyuncs.com/fshop/product/20161108111407606604543.jpg",
+                        "price": 4,
+                        "changePrice": 0,
+                        "quantity": 1,
+                        "discountAmount": 0,
+                        "amount": 0,
+                        "returnStatus": null,
+                        "returnQuantity": null,
+                        "linkUrl": "http://mobile.onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+                    }
+                ],
+                "totalCost": 9.9,
+                "originalCost": 9.9,
+                "amount": 13.9,
+                "status": "4",
+                "refundTag": 0,
+                "systemOrderStatus": 0,
+                "source": "fshop",
+                "createTime": 1487697398000,
+                "payTime": null,
+                "deliverTime": null,
+                "finishTime": null,
+                "address": {
+                    "addressId": 119,
+                    "name": "李云锋",
+                    "countryId": null,
+                    "countryName": "China",
+                    "provinceName": "浙江省",
+                    "city": "杭州市",
+                    "postcode": "310012",
+                    "telephone": "15836548996",
+                    "detailAddress": "西湖区文三路",
+                    "defaultAddress": true
+                },
+                "shopId": "547de083067a4b04afb6ae3c48186688",
+                "shopName": "斑马的霰弹222",
+                "logistNum": "",
+                "logistCompany": "",
+                "buyer": {
+                    "uid": "41fd16fb1a574122b623831726ef86b7",
+                    "nickname": "李云锋"
+                },
+                "commentStatus": 0,
+                "amountUnit": "US"
+            },
+            {
+                "orderCode": "151355028081266349",
+                "itemList": [
+                    {
+                        "itemId": "1099",
+                        "productId": "f190da4900f749b1a878447acf9d3320",
+                        "specKey": "Color:RED;Collection:50L;",
+                        "name": "Haier/海尔 EC6002-R@#$%%#%^%%% 电热水器60升储水式热水器洗澡速热50''家用",
+                        "img": "http://oss.aliyuncs.com/fshop/product/20161108111407606604543.jpg",
+                        "price": 4,
+                        "changePrice": 11,
+                        "quantity": 1,
+                        "discountAmount": 0,
+                        "amount": 0,
+                        "returnStatus": null,
+                        "returnQuantity": null,
+                        "linkUrl": "http://mobile.onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+                    }
+                ],
+                "totalCost": 0,
+                "originalCost": 0,
+                "amount": 15,
+                "status": "1",
+                "refundTag": 0,
+                "systemOrderStatus": 0,
+                "source": "fshop",
+                "createTime": 1487692251000,
+                "payTime": null,
+                "deliverTime": null,
+                "finishTime": null,
+                "address": {
+                    "addressId": 119,
+                    "name": "李云锋",
+                    "countryId": null,
+                    "countryName": "China",
+                    "provinceName": "浙江省",
+                    "city": "杭州市",
+                    "postcode": "310012",
+                    "telephone": "15836548996",
+                    "detailAddress": "西湖区文三路",
+                    "defaultAddress": true
+                },
+                "shopId": "547de083067a4b04afb6ae3c48186688",
+                "shopName": "斑马的霰弹222",
+                "logistNum": "",
+                "logistCompany": "",
+                "buyer": {
+                    "uid": "41fd16fb1a574122b623831726ef86b7",
+                    "nickname": "李云锋"
+                },
+                "commentStatus": 0,
+                "amountUnit": "US"
+            },
+            {
+                "orderCode": "151341633458158587",
+                "itemList": [
+                    {
+                        "itemId": "1098",
+                        "productId": "f190da4900f749b1a878447acf9d3320",
+                        "specKey": "Color:RED;Collection:50L;",
+                        "name": "Haier/海尔 EC6002-R@#$%%#%^%%% 电热水器60升储水式热水器洗澡速热50''家用",
+                        "img": "http://oss.aliyuncs.com/fshop/product/20161108111407606604543.jpg",
+                        "price": 4,
+                        "changePrice": 0,
+                        "quantity": 1,
+                        "discountAmount": 0,
+                        "amount": 0,
+                        "returnStatus": null,
+                        "returnQuantity": null,
+                        "linkUrl": "http://mobile.onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+                    }
+                ],
+                "totalCost": 9.9,
+                "originalCost": 9.9,
+                "amount": 13.9,
+                "status": "1",
+                "refundTag": 0,
+                "systemOrderStatus": 0,
+                "source": "fshop",
+                "createTime": 1487689058000,
+                "payTime": null,
+                "deliverTime": null,
+                "finishTime": null,
+                "address": {
+                    "addressId": 119,
+                    "name": "李云锋",
+                    "countryId": null,
+                    "countryName": "China",
+                    "provinceName": "浙江省",
+                    "city": "杭州市",
+                    "postcode": "310012",
+                    "telephone": "15836548996",
+                    "detailAddress": "西湖区文三路",
+                    "defaultAddress": true
+                },
+                "shopId": "547de083067a4b04afb6ae3c48186688",
+                "shopName": "斑马的霰弹222",
+                "logistNum": "",
+                "logistCompany": "",
+                "buyer": {
+                    "uid": "41fd16fb1a574122b623831726ef86b7",
+                    "nickname": "李云锋"
+                },
+                "commentStatus": 0,
+                "amountUnit": "US"
+            }
+        ],
+        "totalCount": 4,
+        "totalPages": 1,
+        "q": null
+    }
+}

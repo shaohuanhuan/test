@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="gb2312" />
+<meta name="robots" content="all" />
+<meta name="author" content="w3school.com.cn" />
+
+<title>HTML 5 Web Workers</title>
+</head>
+
+<body>
+
+<div id="result">
+	
+</div>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<!--<script type="text/javascript" src="test.js"></script>-->
+<script>
+    var w;
+    function startWorker(){
+        if(typeof(Worker)!=="undefined"){
+            if(typeof(w)=="undefined"){
+            w=new Worker("test.js");
+            }
+            w.onmessage = function (event) {
+                document.getElementById("result").innerHTML=event.data;
+            };
+        }
+        else{
+            document.getElementById("result").innerHTML="Sorry, your browser does not support Web Workers...";
+        }
+    }
+
+    function stopWorker(){ 
+        w.terminate();
+    }
+    startWorker();
+</script>
+</body>
+</html>

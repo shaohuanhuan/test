@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <style type="text/css">
+      html,body{
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+      }
+      .map{
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <title>自定义图层</title>
+  </head>
+  <body>
+    <div id="mapDiv" class="map" tabindex="0"></div>
+
+
+       
+     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=fa9d1c0dc2148442e4a1edc7feab36a4"></script>
+     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+      var map, provinces, redPoint, bluePoint, canvas, colorFlag = 0,
+        started;
+      function buildPoint(color) {
+         /* var c = document.createElement("canvas");
+          c.width = c.height = 40;
+          var ctx = c.getContext("2d");
+          var grd = ctx.createRadialGradient(20, 20, 0, 20, 20, 20);
+          grd.addColorStop(0, color);
+          grd.addColorStop(1, "white");
+          ctx.fillStyle = grd;
+          ctx.beginPath();
+          ctx.arc(20, 20, 20, 0, 2 * Math.PI);
+          ctx.fill();*/
+          var c = document.createElement("img");
+          c.width = c.height = 40;
+          c.setAttribute('src','0.gif');
+          return c;
+      }
+      function onRender() {
+          for (var i = 0; i < provinces.length; i += 1) {
+              var c=new AMap.LngLat(provinces[i].center.split(',')[0], provinces[i].center.split(',')[1])
+              provinces[i].containerPos = map.lngLatToContainer(c);
+          }
+          draw();
+          if(!started){//第一次
+             autoSize();
+             started = true;
+          }
+      }
+      function autoSize () {
+          draw();
+          setTimeout(autoSize, 250);
+      }
+      function draw() {
+          var point = colorFlag ? bluePoint : redPoint;
+          var context = canvas.getContext('2d');
+          context.clearRect(0, 0, canvas.width, canvas.height)
+          for (var i = 0; i < provinces.length; i += 1) {
+              var province = provinces[i];
+              var radious = province.radious;
+              context.drawImage(point,//要使用的图片，画布或视频
+                                province.containerPos.x - radious,//放置的x坐标
+                                province.containerPos.y - radious,//放置的y坐标
+                                radious * 2,
+                                radious * 2
+                              );
+              province.radious = (radious + 1) % 10;
+          }
+          colorFlag = (colorFlag + 1) % 2;
+      }
+
+      var polyline;
+      function addPolyline() {
+        var lineArr = [
+          [120.068904,30.113423],
+          [119.982122,30.101176],
+          [120.187271,30.112501],
+          [120.198258,30.204600]
+        ];
+        polyline = new AMap.Polyline({
+          path: lineArr,          //设置线覆盖物路径
+          strokeColor: "#3366FF", //线颜色
+          strokeOpacity: 1,       //线透明度
+          strokeWeight: 5,        //线宽
+          strokeStyle: "solid",   //线样式
+          strokeDasharray: [10, 5] //补充线样式
+        });
+        polyline.setMap(map);
+      }
+
+      function create() {
+        map = new AMap.Map('mapDiv', {
+         
+            center: new AMap.LngLat( 120.113189,30.154823),//杭州120.163189, 30.268484
+            zoom:11 ,//设置地图缩放级别
+             layers: [
+              // 添加地图底图。注：仅在layers中叠加多图层时需要通过new AMap.TileLayer()添加地图本身
+              new AMap.TileLayer({
+                tileUrl:"http://mt{1,2,3,0}.google.cn/vt/lyrs=m@142&hl=zh-CN&gl=cn&x=[x]&y=[y]&z=[z]&s=Galil"//图块取图地址  
+              })
+              /*new AMap.TileLayer.RoadNet({  
+                zIndex: 10
+              })*/
+            ]
+
+        });
+       
+       //添加地图底图
+        map.plugin(['AMap.OverView'], function () {
+            overView = new AMap.OverView({
+              isOpen: true
+            });
+            map.addControl(overView);
+          });
+
+        addPolyline();
+        
+        map.plugin(['AMap.CustomLayer', 'AMap.DistrictSearch'], function() {
+            var search = new AMap.DistrictSearch();
+            search.search('中国', function(status, data) {
+                if (status === 'complete') {
+                   //provinces3 = data['districtList'][0]['districtList'];
+                   // console.log(provinces3)
+                   $.getJSON('data.json', function(data){
+
+                      provinces=(data)['districts'][0]['districts'];
+                      for (var i = 0; i < provinces.length; i += 1) {
+                         provinces[i].radious = Math.max(2, Math.floor(Math.random() * 10));
+                      }
+                      redPoint = buildPoint('red');
+                      bluePoint = buildPoint('rgba(17,0,255,255)');
+                      canvas = document.createElement('canvas');
+                      canvas.width = map.getSize().width;
+                      canvas.height = map.getSize().height;
+                      console.log( map.getSize())
+                      var cus = new AMap.CustomLayer(canvas, {
+                          zooms: [3, 20],//设置在某区间内显示覆盖物
+                          zIndex: 12
+                      });
+                      cus.render = onRender;
+                      cus.setMap(map)
+                   });
+                    
+                }
+            });
+        });
+      }
+      function getPoint(){
+        var resp='';
+        $.ajax({
+          url:"http://localhost:8000/view/gaode/data.json",
+          method:"get",
+          async:false,
+          datatype:"json",
+          success:function(data){
+                 resp=JSON.parse(data);
+          }
+        });
+        return resp;
+      }
+      create();
+    </script>
+
+  </body>
+  
+</html>

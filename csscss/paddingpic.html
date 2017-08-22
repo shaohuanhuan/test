@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>padding/margin 的百分值实现高度自适应</title>
+
+<!--主要样式-->
+<style>
+/*父元素宽度的一半*/
+/*#container {
+  width: 50%;  
+  background-color: red;
+}*/
+/*与width: 50%;的值保持一致，也就是相当于父元素宽度的一半。*/
+/*.placeholder {
+  padding-top: 50%; 
+}*/
+/*需要触发BFC消除margin折叠的问题*/
+/*#container {
+  width: 100px;
+  position: relative;
+  background-color: red;
+  overflow: hidden;  
+}*/
+/*margin 百分比相对父元素宽度计算*/
+/*.placeholder:after {
+  content: '';
+  display: block;
+  margin-top: 100%; 
+}*/ 
+
+#container {
+  width: 100%;
+  position: relative;
+  background-color: red;
+  overflow: hidden;  /*需要触发BFC消除margin折叠的问题*/
+}
+.placeholder:after {
+  content: '';
+  display: block;
+  margin-top: 100%; /*margin 百分比相对父元素宽度计算*/
+} 
+img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+}
+</style>
+</head>
+
+<body>
+<div id="container" class="placeholder">
+  <img src="1.jpg" />
+</div>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>针题库首页</title>
+    <meta charset="utf-8"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+
+    <!-- =========================== CSS FILES ======================== -->
+    <link rel="stylesheet" href="homeres/css/base.css" type="text/css"/>
+    <link rel="stylesheet" href="homeres/css/style.css" type="text/css"/>
+    <!-- =========================== JS FILES ======================== -->
+    <script type="text/javascript" src="homeres/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="homeres/js/jquery-extend-TrunAd2.js"></script>
+    <script type="text/javascript" src="homeres/js/style.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+</head>
+<body>
+<!--[if lte IE 7]>
+<div class="iec dn oh">
+    <div class="w1000 m0 h50 lh40 pr">
+        <p>
+            检测到您的浏览器为IE7或低于IE7版本，请您更新到<a rel="nofollow" href="http://www.microsoft.com/zh-cn/download/internet-explorer.aspx" target="_blank">高版本</a>，或换用
+<a rel="nofollow" href="http://se.360.cn/" target="_blank">360安全浏览器</a>、<a rel="nofollow"
+                                                                           href="http://www.google.cn/intl/zh-CN/chrome/"
+                                                                           target="_blank">谷歌</a>等浏览器进行浏览。<a
+        class="iegb"></a>        </p>
+    </div>
+</div>
+<script>
+    $(function(){
+        slideDown();
+        $(".iegb").click(function(){
+            $(this).parents(".iec").slideUp(500);
+        })
+    })
+    function slideDown(){
+        var t = setTimeout(function(){
+            $(".iec").slideDown(500);
+        },1000)
+    }
+</script><![endif]-->
+<div id="dlmask">
+
+    <div class="dl_tanc w282 h210 db">
+        <a class="close" id="dlclose">关闭</a>
+
+        <form id="loginForm">
+            <p>
+                <input type="text" id="username" class="dl_wbk w202 h30 pl10 mt25 ml32 dib mt10"
+                       onblur="javascript:if (this.value=='' )  this.value='输入用户名';"
+                       onclick="javascript:if(this.value=='输入用户名') this.value='';" value="输入用户名" style="color:#999">
+            </p>
+
+            <p>
+                <input type="password" id="pwd" class="dl_wbk w202 pl10 h30 mt10 ml32" style="color:#999">
+            </p>
+
+            <div class="jzmm w220 dib mt20 ml32">
+                <p class="w130 fl"><a href="http://www.5haoxue.net/member/reg.php">注册新用户</a></p>
+                <a href="http://www.5haoxue.net/member/resetUserPass.php?dopost=forgetPwd" class="fr" target="_blank">忘记密码？</a>
+                <input type="submit" value="" style="height:40px; padding:0 40px; border:none;"
+                       class="dlbtn db w216 mt10">
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#loginForm").submit(function () {
+                var username2 = $("#username").val();
+                var pwd2 = $("#pwd").val();
+                $.ajax({
+                    url: 'http://www.5haoxue.net/tiku_login.php',
+                    type: 'post',
+                    dataType: 'jsonp',
+                    jsonp: "jsonpCallback",
+                    data: {
+                        username: username2,
+                        pwd: pwd2,
+                        fromApp: 'tiku'
+                    },
+                    success: function (ret) {
+                        if (!jQuery.isEmptyObject(ret)) {
+                            window.location.href = '/site/loginback?' + $.param(ret);
+                        } else {
+                            alert("用户名或密码错误！");
+                        }
+                    },
+                    error: function () {
+                        alert("网络错误，请稍后重试！");
+                    }
+                });
+                return false;
+            })
+        })
+    </script>
+</div>
+<!--top-->
+<header>
+    <div class="top">
+        <div class="w1000 m0 tc cb h60">
+            <a class="fl dib mt15" href="http://tiku.5haoxue.net/"
+                    ><img src="homeres/img/tiku.jpg"/></a>
+                        <a class="fr lh60 login f18" id="dltext">登录</a>
+            <a class="fr lh60 dib ml10 mr10 f16 c999">|</a>
+            <a class="fr lh60 register f18">注册</a>
+                    </div>
+    </div>
+    <!--banner-->
+    <div id="play" class="banner pr">
+        <div id="play_list">
+            <div class="banner1 tc pr" name="h-focus-0">
+                <div class=" w1000 m0 pr">
+                    <div class="dib RotateD pa fr mt121 mr54"><img src="homeres/img/Rbig.png"/></div>
+                    <div class="dib RotateS pa"><img src="homeres/img/smallCirc.png"/></div>
+                </div>
+            </div>
+            <div class="banner2 tc" name="h-focus-1"></div>
+        </div>
+        <div id="play_text">
+            <ul>
+                <li id="0" class="on"></li>
+                <li id="1" class=""></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            $('#play_list').TrunAd2();
+        </script>
+    </div>
+
+</header>
+
+<section>
+    <div id="container">
+        <div class="w1000 m0 program oh pr">
+            <div class="pb h320 fl pa w248">
+                <h1>建筑工程</h1>
+
+                <div class="intro">
+                    <p class="tc">建筑工程领域培训首选品牌</p>
+
+                    <p class="tc">组卷模考、押题试卷、真题解析</p>
+
+                    <p class="tc">累计使用人数<span class="pbnum">已达29948人</span></p>
+                </div>
+                <div class="p-list">
+                    <ul class="mt10 ml25">
+                        <li><a href="/home/index?project=24">一级建造师</a></li>
+                        <li><a href="/home/index?project=23">二级建造师</a></li>
+                        <li><a href="/home/index?project=35">物业管理师</a></li>
+                        <li><a href="/home/index?project=101">安全工程师</a></li>
+                        <li><a href="/home/index?project=100">造价工程师</a></li>
+                        <li><a href="/home/index?project=99">房地产估价师</a></li>
+                        <li><a href="/home/index?project=54">监理工程师</a></li>
+                        <li><a href="/home/index?project=63">咨询工程师</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pff h320 fl pa w248">
+                <h1>财会金融</h1>
+
+                <div class="intro">
+                    <p class="tc">财会金融领域培训首选品牌</p>
+
+                    <p class="tc">组卷模考、押题试卷、真题解析</p>
+
+                    <p class="tc">累计使用人数<span class="pfnum">已达41426人</span></p>
+                </div>
+                <div class="p-list">
+                    <ul class="mt10 ml25">
+                        <li><a href="/home/index?project=5">会计证</a></li>
+                        <li><a href="/home/index?project=6">初级会计</a></li>
+                        <li><a href="/home/index?project=36">经济师</a></li>
+                        <li><a href="/home/index?project=65">银行从业</a></li>
+                        <li><a href="/home/index?project=60">期货从业</a></li>
+                        <li><a href="/home/index?project=64">证券从业</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pm h320 fl pa w248">
+                <h1>医药卫生</h1>
+
+                <div class="intro">
+                    <p class="tc">医药卫生领域培训首选品牌</p>
+
+                    <p class="tc">组卷模考、押题试卷、真题解析</p>
+
+                    <p class="tc">累计使用人数<span class="pmnum">已达19082人</span></p>
+                </div>
+                <div class="p-list">
+                    <ul class="mt10 ml25">
+                        <li><a href="/home/index?project=61">护士资格</a></li>
+                        <li><a href="/home/index?project=68">初级护师</a></li>
+                        <li><a href="/home/index?project=69">主管护师</a></li>
+                        <li><a href="/home/index?project=39">临床执业</a></li>
+                        <li><a href="/home/index?project=41">临床助理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pe h320 fl pa w248">
+                <h1>教师职称</h1>
+
+                <div class="intro">
+                    <p class="tc">教师，职称英语，司法考试培训首选</p>
+
+                    <p class="tc">真题解析、模拟预测、考点直击</p>
+
+                    <p class="tc">累计使用人数<span class="penum">已达16856人</span></p>
+                </div>
+                <div class="p-list">
+                    <ul class="mt10 ml25">
+                        <li><a href="/home/index?project=44">司法考试</a></li>
+                        <li><a href="/home/index?project=48">职称英语</a></li>
+                        <li><a href="/home/index?project=72">教师资格</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <Script>
+            $(function () {
+                $(".program").children().each(function () {
+                    var indEX = $(this).index();
+                    if (indEX == 0) {
+                        $(this).mouseover(function () {
+                            $(this).addClass("p-hover p-hover1")
+                        })
+                                .mouseout(function () {
+                                    $(this).removeClass("p-hover p-hover1")
+                                })
+                    } else if (indEX == 1) {
+                        $(this).mouseover(function () {
+                            $(this).addClass("p-hover p-hover2")
+                        })
+                                .mouseout(function () {
+                                    $(this).removeClass("p-hover p-hover2")
+                                })
+                    } else if (indEX == 2) {
+                        $(this).mouseover(function () {
+                            $(this).addClass("p-hover p-hover3")
+                        })
+                                .mouseout(function () {
+                                    $(this).removeClass("p-hover p-hover3")
+                                })
+                    } else if (indEX == 3) {
+                        $(this).mouseover(function () {
+                            $(this).addClass("p-hover p-hover4")
+                        })
+                                .mouseout(function () {
+                                    $(this).removeClass("p-hover p-hover4")
+                                })
+                    }
+                })
+            })
+        </script>
+    </div>
+</section>
+<!--copyright-->
+<footer>
+    <div class="copyright cb">
+        <div class="tc w1000 m0 cb pt40 pb40">
+            <a href="http://www.5haoxue.net/about/" rel="nofollow" target="_blank" looyu_bound="1">关于我们</a> |
+            <a href="http://www.5haoxue.net/about/jobs/" rel="nofollow" target="_blank" looyu_bound="1">招聘信息</a> |
+            <a href="http://www.5haoxue.net/jiameng" rel="nofollow" target="_blank" looyu_bound="1">学习中心加盟</a> |
+            <a href="http://www.5haoxue.net/news/" rel="nofollow" target="_blank" looyu_bound="1">媒体关注</a> |
+            <a href="http://www.5haoxue.net/service/help/" rel="nofollow" target="_blank" looyu_bound="1">帮助中心</a> |
+            <a href="http://www.5haoxue.net/sitemap/" rel="nofollow" target="_blank" looyu_bound="1">网站地图</a> |
+            <a href="http://www.5haoxue.net/about/contact/" rel="nofollow" target="_blank" looyu_bound="1">联系我们</a><br>
+
+            <p class="bottomfont">Copyright ©2014 5haoxue.net Inc. All Rights Reserved.<br/>好学教育针题库——国内首款职业教育在线题库 版权所有
+                京ICP备13017763号<br/>
+                <span><script src=" http://s19.cnzz.com/stat.php?id=3208297&amp;web_id=3208297&amp;show=pic"
+                              language="JavaScript"></script></span>
+                <span><script type="text/javascript">
+                    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F09eb8195041fc839bc733a96306516ee' type='text/javascript'%3E%3C/script%3E"));
+                </script>
+                </span>
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>

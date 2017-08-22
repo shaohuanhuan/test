@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>叠加云数据图层</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css"/>
+    <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&key=fa9d1c0dc2148442e4a1edc7feab36a4"></script>
+</head>
+<body>
+<div id="mapContainer"></div>
+<script type="text/javascript">
+   var imageLayer = new AMap.ImageLayer({
+      url: 'http://developer.amap.com/wp-content/uploads/2014/06/dongwuyuan.jpg',
+      bounds: new AMap.Bounds(
+        [116.327911, 39.939229],
+        [116.342659, 39.946275]
+      ),
+      zooms: [15, 18]
+    });
+
+    var map = new AMap.Map('mapContainer', {
+      resizeEnable: true,
+      scrollWheel: true,
+      doubleClickZoom: true,
+      center: [116.33719, 39.942384],
+      zoom: 15,
+      layers: [
+        new AMap.TileLayer(),
+        imageLayer
+      ]
+    });
+</script>
+</body>
+</html>           
+
+  

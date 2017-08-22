@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue.js tree-view demo</title>
+    <style>
+      
+    </style>
+    <script src="dist/vue-1.0 .4.js"></script>
+  </head>
+  <body>
+    
+   <!-- <ul id="example-1">
+      <li v-for="item in items">
+        {{ item.message }}
+      </li>
+    </ul>-->
+    
+    <ul id="repeat-object" class="demo">
+      <li v-for="value in object">
+        {{ $key }} : {{ value }}
+      </li>
+    </ul>
+
+    <script>
+    /*var example1 = new Vue({
+      el: '#example-1',
+      data: {
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' }
+        ]
+      }
+    })*/
+
+    new Vue({
+      el: '#repeat-object',
+      data: {
+        object: {
+          FirstName: 'John',
+          LastName: 'Doe',
+          Age: 30
+        }
+      }
+    })
+    </script>
+  </body>
+</html>

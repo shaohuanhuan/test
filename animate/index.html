@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New York Summer &ndash; Jake Blakeley</title>
+    <meta name="description" content="Interactive editorial/blog about my summer in New York and at IDEO.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+     #animated_div {
+        width: 60px;
+        height: 40px;
+        background: #92B901;
+        color: #ffffff;
+        position: relative;
+        font-weight: bold;
+        font: bold 12px '微软雅黑', Verdana, Arial, Helvetica, sans-serif;
+        padding: 20px 10px 0px 10px;
+        animation: animated_div 5s 1;
+        -moz-animation: animated_div 5s 1;
+        -webkit-animation: animated_div 5s 1;
+        -o-animation: animated_div 5s 1;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+      }
+      @keyframes animated_div{
+        0%    {transform: rotate(0deg);left:0px;}
+        25%   {transform: rotate(20deg);left:0px;}
+        50%   {transform: rotate(0deg);left:500px;}
+        55%   {transform: rotate(0deg);left:500px;}
+        70%   {transform: rotate(0deg);left:500px;background:#1ec7e6;}
+        100%  {transform: rotate(-360deg);left:0px;}
+        }
+
+      @-webkit-keyframes animated_div{
+        0%    {-webkit-transform: rotate(0deg);left:0px;}
+        25%   {-webkit-transform: rotate(20deg);left:0px;}
+        50%   {-webkit-transform: rotate(0deg);left:500px;}
+        55%   {-webkit-transform: rotate(0deg);left:500px;}
+        70%   {-webkit-transform: rotate(0deg);left:500px;background:#1ec7e6;}
+        100%  {-webkit-transform: rotate(-360deg);left:0px;}
+        }
+
+      @-moz-keyframes animated_div{
+        0%   {-moz-transform: rotate(0deg);left:0px;}
+        25%  {-moz-transform: rotate(20deg);left:0px;}
+        50%  {-moz-transform: rotate(0deg);left:500px;}
+        55%  {-moz-transform: rotate(0deg);left:500px;}
+        70%  {-moz-transform: rotate(0deg);left:500px;background:#1ec7e6;}
+        100% {-moz-transform: rotate(-360deg);left:0px;}
+        }
+
+      @-o-keyframes animated_div{
+        0%   {transform: rotate(0deg);left:0px;}
+        25%  {transform: rotate(20deg);left:0px;}
+        50%  {transform: rotate(0deg);left:500px;}
+        55%  {transform: rotate(0deg);left:500px;}
+        70%  {transform: rotate(0deg);left:500px;background:#1ec7e6;}
+        100% {transform: rotate(-360deg);left:0px;}
+        }
+
+        /*移动的云*/
+        .clouds{
+          height:500px;
+          width:500px;
+        }
+        .clouds img {
+          position: fixed;
+          top: 0px;
+          height: 100%;
+          z-index:99;
+          }
+        .clouds img:first-of-type{
+          left:0;
+        }
+        .clouds img:nth-of-type(2){
+          right:0;
+          -webkit-animation:cloudOne 60s linear 0s infinite alternate;;
+        }
+        .clouds img:last-of-type{
+          left:0;
+          -webkit-animation:cloudTwo 60s linear 0s infinite alternate;;
+        }
+
+        @-webkit-keyframes cloudOne {
+          0% {
+            -webkit-transform: translateX(0px); 
+          }
+          100% {
+            -webkit-transform: translateX(-900px); 
+            } 
+          }
+
+        @-webkit-keyframes cloudTwo {
+          0% {
+            -webkit-transform: translateX(0px); 
+          }
+          100% {
+            -webkit-transform: translateX(900px); 
+            } 
+          }
+    </style>
+  </head>
+  <body>
+    <p id="animated_div">CSS3 动画</p>
+
+    <!--移动的云-->
+    <div class="clouds">
+      <img src="clouds.png" alt="Cloud background">
+      <img src="movingClouds.png" alt="Animated Cloud #1" >
+      <img src="movingCloud2.png" alt="Animated Cloud #2">
+    </div>
+
+  </body>
+</html>

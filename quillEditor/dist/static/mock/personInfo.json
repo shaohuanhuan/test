@@ -1,0 +1,49 @@
+  {
+    "code": 0,
+    "data": {
+     "lastMessage": { "faceBookMessageId": "231", "twitterMessageId": "22", "linkedInMessageId": "22", "mailMessageId": "233" },
+      "personId": "123rgg",
+      "userId": "qwerty23dfgty",
+      "avatar": "http://image.com/avatar/person.jpg",
+      "firstName": "xi",
+      "companyId": "zxcvbnmqwert",
+      "companyName": "longxi",
+      "position": "OOO",
+      "department": "技术部",
+      "remark": "备注信息来一波",
+      "type": "1",
+      "typeValue": "竞争对手",
+      "stage": "2",
+      "stageValue": "跟进",
+      "source": "3",
+      "sourceValue": "老客户",
+      "messageId": 1,
+      "lastAction": "发消息",
+      "lastActionTime": 1481628407821,
+      "messageIsMajor": 0,
+      "messageIsRead": 0,
+      "score": "20",
+      "createSource": "5",
+      "createTime": 1481628407821,
+      "telephoneList": [{
+        "type": 0,
+        "telephone": "15673456789"
+      }],
+      "mailList": [{
+        "mailId": 123,
+        "type": 0,
+        "mail": "loonxi@loonxi.com"
+      }],
+      "socialList": [{
+        "socialId": 1,
+        "platform": 0,
+        "url": "https://www.facebook.com/in/loonxi12345",
+        "desc": "龙席"
+      }],
+      "tagList": [{
+        "tagId": 123,
+        "tag": "UFO"
+      }],
+      "avatars": ["1235.jpg", "34567.jpg"]
+    }
+  }

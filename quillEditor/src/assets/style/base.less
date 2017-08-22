@@ -1,0 +1,538 @@
+@import "./normalize.less";
+@import './variable.less';
+@import './loading.css';
+// 图标字体
+@font-face {
+  font-family: 'icomoon';  /* project id 250415 */
+  src: url('../fonts/iconfont.eot');
+  src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/iconfont.woff') format('woff'),
+  url('../fonts/iconfont.ttf') format('truetype'),
+  url('../fonts/iconfont.svg#iconmoon') format('svg');
+}
+// unicode和 class的方式使用图标
+.icon-font,[class^="icon"]{
+  font-family:"icomoon" !important;
+  font-size:12px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+// svg的方式使用图标
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+.icon-search:before {
+  content: '\e607';
+}
+.icon-fresh:before{
+  content: '\e6f9';
+}
+.icon-warn:before{
+  content: '\e604';
+}
+.icon-prompt:before{
+  content: '\e629';
+}
+.icon-fail:before{
+  content: '\e605';
+}
+.icon-ok:before{
+  content: '\e606';
+}
+.icon-left:before{
+  content: '\e600';
+}
+.icon-remove2:before{
+  content: '\e602';
+}
+.icon-move:before { content: "\e66e"; }
+.icon-contact-facebook:before {
+  content: '\e6d9';
+  color: #ddd;
+}
+.icon-contact-twitter:before {
+  content: '\e6d7';
+  color: #ddd;
+}
+.icon-contact-linkedin:before {
+  content: '\e616';
+  color: #ddd;
+}
+.icon-facebook:before{
+  content: '\e6d9';
+  color: @facebookColor;
+}
+.icon-fb:before{
+   content: '\e68d';
+   color: @facebookColor;
+ }
+.icon-company:before{
+  content: '\e62d';
+}
+.icon-twitter:before {
+  content: '\e6d7';
+  color: @twitterColor;
+}
+.icon-twitter-two:before {
+  content: '\e6d2';
+}
+.icon-linkedin-two:before {
+  content: '\e7ea';
+}
+.icon-linkedin:before {
+  content: '\e616';
+  color: @linkedInColor;
+}
+.icon-pinterest:before {
+  content: '\e6ff';
+}
+.icon-mail:before {
+   content: '\e614';
+ }
+.icon-remark-i:before {
+  content: '\e643';
+}
+.icon-arrdown:before{
+  content: '\e608';
+}
+.icon-arrup:before{
+  content: '\e609';
+}
+.icon-quest:before{
+  content: '\e6ed';
+}
+.icon-remind:before{
+  content: '\e601';
+}
+.icon-remind:before{
+  content: '\e601';
+}
+.icon-addPerson:before {
+  content: '\e684';
+}
+.icon-pdf:before { content: "\e69c"; }
+.icon-edit:before { content: "\e68a"; }
+.el-select .el-input .el-input__icon.el-icon-caret-top{
+  font-family:"icomoon" !important;
+  color: @textColor;
+  font-size: 15px;
+  &:before{
+    content: '\e609' !important;
+  }
+}
+.icon-add:before{
+  content: '\e612';
+}
+.icon-close:before{
+  content: '\e6ec';
+}
+.icon-arright:before{
+  content: '\e613';
+}
+.icon-addthin:before{
+  content: '\e61e';
+}
+.icon-addcir:before{
+  content: '\e6da';
+}
+.icon-add10:before{
+  content: '\e63a';
+}
+.icon-editor:before{
+  content: '\e61a';
+}
+.icon-msg-full:before{
+  content: '\e63c';
+}
+.icon-real-start:before{
+  content: '\e678';
+}
+.icon-empty-start:before{
+  content: '\e68f';
+}
+.icon-merge:before{
+  content: '\e66d';
+}
+.icon-label:before{
+  content: '\e66b';
+}
+.icon-remove:before{
+  content: '\e679';
+}
+.icon-exprot:before {
+  content: "\e68e";
+}
+.icon-eye:before {
+  content: "\e60c";
+}
+// 商品
+.icon-pen:before{
+  content: "\e68a";
+}
+.icon-copy:before{
+  content: "\e688";
+}
+.icon-trash:before{
+  content: "\e679";
+}
+.icon-groupsort:before{
+  content: "\e667";
+}
+.icon-menu:before{
+  content: '\e60b';
+}
+.icon-drag:before{
+  content: '\e66f';
+}
+.icon-compress:before{
+  content: '\e625';
+}
+.icon-shape:before{
+  content: '\e61c';
+}
+.icon-weizhi:before{
+  content: '\e622';
+}
+.icon-right:before{
+  content: '\e626';
+}
+.icon-agree:before{
+  content: '\e60e';
+}
+.icon-replay:before{
+  content: '\e62f';
+}
+.icon-retweet:before{
+  content: '\e71a';
+}
+.icon-social:before{
+  content: '\e633';
+}
+.icon-track:before{
+  content: '\e635';
+}
+.icon-remark:before{
+  content: '\e634';
+}
+.icon-adjust:before{
+  content: '\e683';
+}
+.icon-contact-person:before{
+  content: '\e689';
+}
+.icon-contact-company:before{
+  content: '\e638';
+}
+//菜单icon
+.icon-menugroup:before{
+  content: '\e664';
+}
+.icon-menuprod:before{
+  content: '\e687';
+}
+.icon-menupage:before{
+  content: '\e671';
+}
+.icon-menuorder:before{
+  content: '\e672';
+}
+.icon-excel:before{
+  content: '\e61c';
+}
+.icon-file:before{
+  content: '\e639';
+}
+.icon-smile:before{
+  content: '\e6c0';
+}
+.icon-fly:before{
+  content: '\e6bf';
+}
+.icon-funds:before { content: "\e693"; }
+
+.icon-social-promotion:before { content: "\e67e"; }
+
+.icon-find-client:before { content: "\e690"; }
+
+.icon-social:before { content: "\e67c"; }
+
+.icon-email:before { content: "\e644"; }
+
+.icon-inquiry:before { content: "\e63d"; }
+
+.icon-contact-person:before { content: "\e689"; }
+
+.icon-gongsi1:before { content: "\e638"; }
+// body颜色
+@bg-body:#f0f2f3;
+@fs:12px;
+@c-fr-color:#33475B;
+// @btnborder: #CBD6E3;
+@mainFontColor: #4F6D95;
+body{
+  background:@bg-body;
+  font-size:@fs;
+  color:@c-fr-color;
+  width: 100vw;
+  overflow-x: hidden;
+}
+// 蓝色的保存按钮和白色的取消按钮
+.save-btn,.cancel-btn{
+      display: inline-block;
+      width:140px;
+      height: 50px;
+      line-height: 50px;
+      border:1px solid @inputBorderColor;
+      margin:20px 30px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+.cancel-btn{
+  background: white;
+  color:@mainFontColor;
+}
+.save-btn{
+  background: @activeBlue;
+  color:white;
+}
+// 列表里的按钮
+.btn-blue.el-button,.btn-trans.el-button{
+  margin-top: 5px;
+  min-width: 80px;
+}
+.btn-blue.el-button{
+  padding: 6px 11px;
+}
+.btn-trans.el-button{
+  padding: 6px 11px;
+  color: @mainFontColor;
+  border: 1px solid @inputBorderColor;
+  &:hover{
+    background: @activeBlue;
+    color:white;
+  }
+}
+// 背景
+.logistic-container{
+    width:100%;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    min-height: 600px;
+    background: white;
+    box-shadow: 0 0 6px rgba(0,0,0,.06);
+    border-radius: 6px;
+    overflow: hidden;
+}
+// 刷新按钮
+.fresh-btn.el-button{
+  padding: 7px 6px 6px 6px;
+  border: 1px solid @inputBorderColor;
+  vertical-align: middle;
+  .icon-fresh{
+    font-size: 20px;
+    color: #B0C1D4;
+  }
+  &:hover, &:focus{
+    .icon-fresh{
+      color: @activeBlue
+    }
+  }
+}
+// 弹框公共样式
+.confirm-btn {
+  .el-button {
+    width: 80px;
+    height: 32px;
+    font-size: 13px;
+    border-radius: 4px;
+    padding: 0;
+  }
+  .el-button + .el-button {
+    margin-left: 5px;
+  }
+  .close {
+    color: @cancel;
+    border: none;
+    cursor: pointer;
+  }
+  .confirm {
+    color: @white;
+    font-weight: 300;
+    background: @activeBlue;
+    border: none;
+  }
+}
+//.el-dialog--small .el-dialog__header{
+//  padding-bottom: 13px;
+//  border: 1px solid #DFE3EB;
+//}
+.el-dialog__close.el-icon-close{
+  color: #7C98B6
+}
+.el-dialog__header .el-dialog__title{
+  font-size: 14px;
+}
+// 表单的 公共输入框
+.el-input__inner{
+  height: 34px;
+  border: 1px solid @inputBorderColor;
+}
+// 大按钮
+.size-l{
+  width: 125px;
+  height: 40px;
+}
+// 红色字
+.red-tip{
+  color: #F86563;
+}
+.ellipsis{
+   overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+// 列表的暂无数据
+.no-data{
+  padding-top: 100px;
+  width: 100%;
+  text-align: center;
+  .img{
+    display: inline-block;
+    width: 82px;
+    height: 94px;
+    background: url(../img/nodata2.png) center no-repeat;
+    background-size: 82px 94px;
+  }
+  .tips{
+    margin: 15px 0;
+    color: #4F6D95;
+    font-size: 13px;
+  }
+  .el-button{
+    margin-top: 25px;
+  }
+}
+// input公共样式
+.el-select .el-input{
+  .el-input__inner{
+    &:hover{
+      border: 1px solid @inputBorderColor;
+    }
+    &:focus{
+      .shadow()
+    }
+  }
+ }
+.el-input{
+  .el-input__inner{
+    border: 1px solid @inputBorderColor;
+    &:hover, &:focus{
+      border: 1px solid #02AAAA;
+    }
+    &:focus{
+      .shadow()
+    }
+  }
+}
+.shadow(){
+  border: 1px solid #02AAAA;
+  -webkit-box-shadow: 1px 0 1px 0 #02AAAA;
+  -moz-box-shadow: 1px 0 1px 0 #02AAAA;
+   box-shadow: 1px 0 1px 0 #02AAAA;
+}
+// radio
+.el-radio{
+  .el-radio__inner::after{
+    width: 7px;
+    height: 7px;
+    background-color: @activeBlue;
+  }
+  .el-radio__input.is-checked .el-radio__inner{
+    border-width: 2px;
+    background: #fff;
+  }
+  .el-radio__inner:hover{
+    border-width: 2px;
+  }
+}
+// checkbox
+.el-checkbox{
+  .el-checkbox__inner{
+    border-radius: 1px;
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner{
+    border-color: @activeBlue;
+  }
+  .el-checkbox__inner:hover{
+    border-width: 2px;
+  }
+}
+.d-size .el-dialog--small{
+  width:538px;
+}
+.el-input-group__append{
+  .el-icon-search{
+    font-size: 16px;
+    background-color: #f5f8fa;
+    &:before{
+      font-family:"icomoon" !important;
+      content: '\e6be'
+    }
+  }
+}
+// placeholder
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: #cbd6e2!important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #cbd6e2!important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #cbd6e2!important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #cbd6e2!important;
+}
+// 没用el-select的下拉框
+.ui-select{
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAzklEQVQoU5WRuxGCQBCGd2HE1BIs4WZo4Ax8hBrKGGAHWoEtaAckXGwKBlwDHNKBJRifg+vcjTiKJLfZPr59/IvgaOhYD+5AOFsvAfDQ6GBylcm9byKbRsz3sCqzFO2EcB6dgYDKXKy6gCn2EAsg2quLSCzAeDzygocEpEplYttCNj7UFQCeVJYeTfxzg0n6gb4Rwc50evsFANZlnsZtk5+j7a4I0kCIyAlorHLBv9f8U4ktNtwnKoigfuoB7wrRK6tRrtFD2aea+x9cP/0COOxPDbZ9xqoAAAAASUVORK5CYII=") no-repeat scroll 88% center transparent;
+}
+// 时间选择的颜色
+.time-sel{
+  .el-date-table td.current:not(.disabled), .el-date-table td.start-date, .el-date-table td.end-date{
+    background-color: #0BC!important;
+  }
+  .el-date-table td.in-range{
+    background-color: #ccf0f4;
+  }
+  .el-icon-date:before{
+    font-family:"icomoon" !important;
+    content: '\e685';
+  }
+}
+
+// tip背景颜色
+.el-tooltip__popper.is-dark{
+  background-color: #415b77;
+}
+
+// CheckBox 样式
+.el-checkbox{
+  .el-checkbox__input{
+    line-height: 1 !important;
+  }
+  .el-checkbox__inner{
+    border: 2px solid rgb(191, 196, 217);
+    border-radius: 2px;
+    &::after{
+
+    }
+  }
+}

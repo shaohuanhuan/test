@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>ExtDemo3</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
+	<script type="text/javascript" src="extjs/ext-all.js"></script>
+		<script type="text/javascript">
+
+/*Ext.onReady(function(){
+	Ext.MessageBox.alert('提示','你确定删除吗?',callBack);	
+	function callBack(id){
+		alert('id是'+id);
+	}
+	});
+*/
+Ext.onReady(function(){
+	Ext.MessageBox.confirm('温馨提示','你确定删除吗?',callBack);
+	
+	function callBack(id){
+		
+		Ext.Msg.alert('提示','删除的Id为'+id);
+	}
+	
+	
+	
+	})
+
+		</script>
+</head>
+<body></body>
+</html>

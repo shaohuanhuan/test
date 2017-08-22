@@ -1,0 +1,438 @@
+@import './variable.less';
+@border: #dfe3eb;
+@padleft: 50px;
+@c-border1:#cbd6e3;
+// 列表
+.double-tab{
+  position: relative;
+  li{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid @border;
+  }
+  .double-td{
+    .btn-blue.el-button,.btn-trans.el-button{
+      margin: 0 auto;
+      display: block;
+    }
+    .el-button:nth-child(1){
+      margin-bottom: 8px;
+    }
+  }
+}
+.double-column{
+  height: auto;
+  // min-height: 133px;
+}
+.double-th{
+  margin-top: 16px;
+  height: 36px;
+  line-height: 36px;
+  padding-left: 40px;
+  border-top: 1px solid #e3e6ed;
+  background-color: #F5F8FA;
+}
+.double-td{
+  width: 10%;
+  float: left;
+  // height: 98px;
+  padding-top: 16px;
+  font-size: 13px;
+  border-right: 1px solid @border;
+  background-color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  p{
+    line-height: 22px;
+  }
+  .tit{
+    display: inline-block;
+    margin-right: 2%;
+    padding-right: 5px;
+    width: 78%;
+    line-height: 18px;
+    vertical-align: top;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.double-span-item{
+  position: relative;
+  width: 50%;
+  border-left: 1px solid @border;
+  text-align: left;
+  img{
+    position: absolute;
+    left: 20px;
+  }
+  .double-item{
+    padding: 0 0 2px 99px;
+    height: 78px;
+    box-sizing: border-box;
+  }
+  .bortop{
+    padding-top: 16px;
+    height: 96px;
+    border-top: 1px solid @border;
+  }
+}
+.status-td{
+  p{
+    line-height: 16px;
+  }
+}
+.double-one{
+  margin-bottom: 16px;
+  white-space: normal;
+}
+.double-two{
+  font-size: 12px;
+  color: #7C98B6;
+}
+.sub-tip{
+  color: #7C98B6;
+}
+.double-header{
+   border-top: 1px solid @border;
+  .double-td{
+    height: 44px;
+    line-height: 44px;
+    padding-top: 0;
+    border-right: 0;
+    background-color: #F5F8FA;
+    font-weight: bold;
+  }
+  .double-span-item{
+    padding-left: @padleft;
+  }
+}
+// 列表----end
+// 搜索框
+.input-sel-search{
+  width: 310px;
+  *{
+    border-color: #CBD6E3;
+  }
+  .el-select{
+    width: 100px;
+    .el-input__inner{
+      width: 100px;
+    }
+  }
+  .el-input-group__prepend{
+    background-color: transparent;
+    border-right: 0;
+  }
+  .el-input__inner{
+    width: 162px;
+    border-left: 0;
+  }
+  .el-input{
+    color: #333;
+  }
+  .input-split{
+    position: absolute;
+    left: 100px;
+    top: 0;
+  }
+}
+.input-split{
+  display: inline-block;
+  width: 0;
+  height: 17px;
+  border: 0;
+  border-left: 1px solid @c-border1;
+}
+.time-sel {
+  display: inline-block;
+  position: relative;
+  width: 321px;
+  border: 1px solid @c-border1;
+  border-radius: 4px;
+  vertical-align: middle;
+  .select-keyword{
+    position: absolute;
+    left: 0;
+    width: 100px;
+    border: 0;
+    .el-input__inner{
+      height: 31px;
+      border: 0;
+      &:hover, &:focus{
+        border: 0;
+        box-shadow: none;
+      }
+    }
+  }
+  .select-time{
+    padding-left: 105px;
+    height: 34px;
+    line-height: 34px;
+    .el-date-editor--daterange.el-input{
+      margin-top: -20px;
+      width: 210px;
+      vertical-align: middle;
+    }
+    .el-date-editor .el-picker-panel{
+      width: 500px!important;
+    }
+    .el-input__inner{
+      height: 31px;
+      border: 0;
+      border-radius: 0;
+      &:hover, &:focus{
+        border: 0;
+        box-shadow: none;
+      }
+      // &:hover{
+      //   border: 1px solid #02AAAA;
+      // }
+    }
+  }
+}
+.search-box{
+  position: relative;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-bottom: 2px solid #eaf0f6;
+  *{
+    font-size: 13px;
+  }
+  .right-module{
+    position: absolute;
+    right: 0;
+    top: 10px;
+    margin: 0;
+    width: 540px;
+  }
+}
+@-moz-document url-prefix(){
+  .search-box{
+    *{
+      vertical-align: middle;
+    }
+    .time-sel .select-time .el-input__inner{
+      margin-bottom: -15px;
+    }
+  }
+} 
+.select-keyword{
+  height: 35px;
+  line-height: 35px;
+  padding-left: 5px;
+  color: #33475B;
+  border: 1px solid @c-border1;
+  outline: none;
+}
+// .double-span-item{
+//   width: 50%;
+// }
+.el-tabs__nav-prev{
+  display: none;
+}
+// 修改价格
+.modprice-info{
+  margin-top: 10px;
+  padding-left: 20px;
+  p{
+    line-height: 48px;
+    color: #33475B;
+    font-size: 13px;
+  }
+  .tips76{
+    margin-top: -28px;
+    color: #7D98B6;
+    font-size: 12px;
+  }
+  .ui-logist{
+    width: 22%;
+  }
+  .el-select{
+    width: 20%;
+  }
+}
+.el-select+label,.el-input+label{
+  margin-left: 15px;
+}
+// 物流信息propover
+.el-popover{
+  text-align: center;
+  .icon-smile{
+    display: block;
+    margin: 15px auto;
+    width: 30px;
+    color: #B0C1D3;
+    font-size: 32px;
+  }
+  .no-logist{
+    margin: 21px 0;
+    color: @textColor;
+    font-size: 13px;
+  }
+}
+.logist-item{
+  position: relative;
+  padding-left: 200px;
+  height: 50px;
+  color: @textColor;
+  text-align: left;
+  .date{
+    position: absolute;
+    left: 50px;
+    top: 2px;
+    width: 150px;
+  }
+  i{
+    margin-left: 10px;
+    display: inline-block;
+    color: #90a7c1;
+  }
+  span{
+    line-height: 16px;
+  }
+}
+.logist-list{
+  margin: 20px;
+}
+.fly-line{
+  position: absolute;
+  left: 30px;
+  top: 33px;
+  height: 88%;
+  width: 20px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAABtBAMAAABaYfxNAAAAGFBMVEX///+wwdPV3ui4yNjE0d7g5+60xNb4+fsuyMmZAAAAWElEQVQoz2OgHmAyVoAwFAWFIAxDQWEEAyGFUIwJRt0z6p5B4h7yAKtbSgCIZncUFBQpADJYBIHAAcgIBDFEgQygDFAOyEgEMcTgDLgUXDFcO9xAuBX4AABtahIz7uvqhAAAAABJRU5ErkJggg==) center 10px repeat-y;
+  i{
+    display: inline-block;
+    padding-bottom: 13px;
+    font-size: 20px;
+    color: #5488f9;
+    background-color: #fff;
+  }
+}
+// 物流信息 -----end
+// 退款计算控件
+.calu-box{
+  position: relative;
+  a{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 18px;
+    width: 30px;
+    line-height: 18px;
+    color: @textColor;
+    font-size: 14px;
+    border-left: 1px solid #bfc4d9;
+    text-align: center;
+  }
+  .icon-arrdown{
+    top: 18px;
+    border-top: 1px solid #bfc4d9;
+  }
+}
+.ui-spec{
+  margin-top: 10px;
+  color: #7D98B6;
+  font-size: 13px;
+}
+.totalcost-box{
+  margin: 20px 0 10px 0;
+  min-height: 114px;
+  color: #32475A;
+  background-color: #EBF0F6;
+}
+.totalcost-right{
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  padding-left: 30px;
+  width: 150px;
+  label{
+    color: #32475a;
+    font-weight: bold;
+  }
+  p{
+    line-height: 22px;
+  }
+  .el-checkbox{
+    position: absolute;
+    left: 0;
+  }
+}
+.calu-cost{
+  margin: 12px 0;
+  .red-tip{
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.refund-form{
+  .ui-lbl,.el-form-item__label{
+    color: @textColor;
+    font-size: 14px; 
+    font-weight: bold;
+  }
+  .el-form-item__content{
+    position: relative;
+  }
+  .el-input__inner{
+    height: 40px;
+    border-radius: 0;
+  }
+}
+.unit-input{
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  color: @textColor;
+  i{
+    color: #DFE3EB;
+    margin-right: 5px;
+  }
+}
+// 退款弹框
+.refund-tab,.price-tab{
+  .double-header{
+    border-bottom: 1px solid @border;
+  }
+  .double-td{
+    padding-top: 30px;
+    width: 20%;
+    border: 0;
+  }
+  .double-span-item{
+    padding-left: 20px;
+    width: 40%;
+  }
+  .double-column{
+    border-bottom: 1px solid @border;
+  }
+  .calu-box{
+    margin-top: -10px;
+  }
+}
+.one-sel{
+  margin: 10px 0 20px 0;
+}
+.confirm-btn{
+  margin: 10px 0 0 20px;
+}
+// 价格弹框 列表
+.price-tab{
+  .double-header{
+    .double-td{
+      padding-top: 0;
+    }
+  }
+  .double-td{
+    width: 12%;
+  }
+  .double-span-item{
+    width: 40%;
+  }
+  .el-input{
+    margin-top: -10px;
+    width: 60%;
+  }
+}

@@ -1,0 +1,124 @@
+使用组件
+
+在 Vue.js 中，我们可以用 Vue 扩展出来的 ViewModel 子类当做可复用的组件。这在概念上与 Web Components 非常相似，不同之处在于 Vue 的组件无需任何 polyfill。要创建一个组件，只需调用 Vue.extend() 来生成一个 Vue 的子类构造函数：
+
+
+// 扩展 Vue 得到一个可复用的构造函数
+var MyComponent = Vue.extend({
+  template: '<p>A custom component!</p>'
+})
+Vue 的构造函数可接收的大部分选项都能在 Vue.extend() 中使用，不过也有两个特例：data 和 el。由于每个 Vue 的实例都应该有自己的 $data 和 $el，我们显然不希望传递给 Vue.extend() 的值被所有通过这个构造函数创建的实例所共享。因此如果要定义组件初始化默认数据和元素的方式，应该传入一个函数：
+
+
+var ComponentWithDefaultData = Vue.extend({
+  data: function () {
+    return {
+      title: 'Hello!'
+    }
+  }
+})
+接下来，就可以用 Vue.component() 来注册这个构造函数了：
+
+
+// 把构造函数注册到 my-component 这个 id
+Vue.component('my-component', MyComponent)
+为了更简单，也可以直接传入 option 对象来代替构造函数。如果接收到的是一个对象，Vue.component() 会为你隐式调用 Vue.extend()：
+
+
+// 注意：该方法返回全局 Vue 对象，
+// 而非注册的构造函数
+Vue.component('my-component', {
+  template: '<p>A custom component!</p>'
+})
+之后就能在父级实例的模板中使用注册过的组件了 (务必在初始化根实例之前注册组件) ：
+
+<!-- 父级模板 -->
+<my-component></my-component>
+渲染结果：
+
+<p>A custom component!</p>
+你没有必要，也不应该全局注册所有组件。你可以限制一个组件仅对另一个组件及其后代可用，只要在另一个组件的 components 选项中传入这个组件即可 (这种封装形式同样适用于其他资源，例如指令和过滤器) ：
+
+var Parent = Vue.extend({
+  components: {
+    child: {
+      // child 只能被
+      // Parent 及其后代组件使用
+    }
+  }
+})
+理解 Vue.extend() 和 Vue.component() 的区别非常重要。由于 Vue 本身是一个构造函数， Vue.extend() 是一个类继承方法。它用来创建一个 Vue 的子类并返回其构造函数。而另一方面，Vue.component() 是一个类似 Vue.directive() 和 Vue.filter() 的资源注册方法。它作用是建立指定的构造函数与 ID 字符串间的关系，从而让 Vue.js 能在模板中使用它。直接向 Vue.component() 传递 options 时，它会在内部调用 Vue.extend()。
+
+Vue.js 支持两种不同风格的调用组件的 API：命令式的基于构造函数的 API，以及基于模板的声明式的 Web Components 风格 API。如果你感到困惑，想一下通过 new Image() 和通过 <img> 标签这两种创建图片元素的方式。它们都在各自的适用场景下发挥着作用，为了尽可能灵活，Vue.js 同时提供这两种方式。
+
+table 元素对能出现在其内部的元素类型有限制，因此自定义元素会被提到外部而且无法正常渲染。在那种情况下你可以使用指令式组件语法： <tr v-component="my-component"></tr>。
+
+数据流
+1:通过 prop 传递数据
+默认情况下，组件有独立作用域。这意味着你无法在子组件的模板中引用父级的数据。为了传递数据到拥有独立作用域的子组件中，我们需要用到 prop。
+一个 “prop” 是指组件的数据对象上的一个预期会从父级组件取得的字段。一个子组件需要通过 prop 选项显式声明它希望获得的 prop：。
+Vue.component('child', {
+  // 声明 prop
+  props: ['msg'],
+  // prop 可以在模板内部被使用，
+  // 也可以类似 `this.msg` 这样来赋值
+   template: '<span>{{msg}}</span>'
+})
+ 然后，我们可以像这样向这个组件传递数据：
+
+<child msg="hello!"></child>
+结果：
+
+驼峰命名 vs. 连字符命名
+
+HTML 特性是大小写不敏感的。当驼峰式的 prop 名在 HTML 中作为特性名出现时，你需要用对应的连字符（短横）分隔形式代替：
+
+
+Vue.component('child', {
+  props: ['myMessage'],
+  template: '<span>{{myMessage}}</span>'
+})
+1
+2
+<!-- 重要：使用连字符分隔的名称！ -->
+<child my-message="hello!"></child>
+动态 prop
+
+我们同样能够从父级向下传递动态数据。例如：
+
+<div>
+  <input v-model="parentMsg">
+  <br>
+  <child msg="{{parentMsg}}"></child>
+</div>
+结果:
+
+
+暴露 $data 作为 prop 也是可行的。传入的值必须是一个对象，它会被用来替换组件默认的 $data 对象。
+
+传递回调 prop
+
+同样可以向下传递一个方法或语句作为子组件的一个回调方法。借此可以进行声明式的、解耦的父子通信：
+
+Vue.component('parent', {
+  // ...
+  methods: {
+    onChildLoaded: function (msg) {
+      console.log(msg)
+    }
+  }
+})
+
+Vue.component('child', {
+  // ...
+  props: ['onLoad'],
+  ready: function () {
+    this.onLoad('message from child!')
+  }
+})
+1
+2
+<!-- 父级模板 -->
+<child on-load="{{onChildLoaded}}"></child>
+prop 绑定类型
+默认情况下，所有 prop 都会在子级和父级的属性之间建立一个单向向下传递的绑定关系：当父级的属性更新时，它将向下同步至子级，反之则不会。这种默认设定是为了防止子级组件意外

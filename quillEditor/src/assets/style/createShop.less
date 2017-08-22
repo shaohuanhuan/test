@@ -1,0 +1,240 @@
+/**
+ * common list start by 
+ */
+#main{
+  width:1198px;
+  height:1108px;
+  border:1px solid #F3F3F3;
+  margin: 0 auto;
+}
+#main ul{
+  overflow: hidden;
+  width:1140px;
+  margin-top:10px;
+}
+#main ul li{
+  float: left;
+  width:50%;
+  height:34px;
+  margin-top: 20px;
+}
+#main ul.contact li{
+  width:100%;
+}
+#main ul li span>b{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 3px;
+  margin-right: 10px;
+  color: #E22B2B;
+}
+#main ul li.title{
+  width:100%;
+  height:40px;
+  line-height:40px;
+  background-color:#FAFAFA;
+  text-align: left;
+}
+#main ul li.title b{
+  display: inline-block;
+  height:16px;
+  margin:0 5px 0 10px;
+  border-left:3px solid #F95146;
+}
+#main ul li.title strong{
+  font-size:16px;
+  margin-right:10px;
+}
+#main ul li.title small{
+  color:#A2A2A2;
+}
+#main ul li.license,#main ul li.tax{
+  position: relative;
+  width:100%;
+  height:140px;
+}
+#main ul li>span{
+  float:left;
+  display: inline-block;
+  width: 145px;
+  text-align: right;
+  line-height: 34px;
+}
+#main ul li.license>span,#main ul li.tax>span{
+  height: 140px;
+  line-height: 16px;
+}
+#main ul li.license>div,#main ul li.tax>div{
+  float:left;
+  height:140px;
+}
+#main ul li.license p,#main ul li.tax p{
+  width:187px;
+  color: #9E9E9E;
+}
+#main ul li.license>div>a{
+  display: inline-block;
+  width: 187px;
+  height: 119px;
+  background: url(../../images/icon.png) no-repeat -469px -812px;
+}
+/*#main ul li.license .upload{*/
+/*width: 187px;*/
+/*height: 119px;*/
+/*opacity: 0;*/
+/*}*/
+#main ul li.license>strong,#main ul li.tax>strong{
+  float:left;
+  position:relative;
+  width: 187px;
+  height: 118px;
+  margin-left: 20px;
+  background-image: url(../../images/register/smallImg.jpg);
+}
+#main ul li.tax>strong{
+  background-image: url(../../images/register/shuiwu01_03.png);
+}
+#main ul li.license>strong img,#main ul li.tax>strong img{
+  width: 100%;
+  height: 100%;
+}
+#main ul li.license>strong>a,#main ul li.tax>strong>a{
+  position:absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 24px;
+  height: 24px;
+  background: url(../../images/icon.png) no-repeat -914px -811px;
+}
+#main ul li.license>strong>a.browse,#main ul li.tax>strong>a.browse{
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #e7e7e7;
+  background: rgba(0,0,0,0.3);
+}
+#main ul li.license>strong:hover>a.browse,#main ul li.tax>strong:hover>a.browse{
+  display: block;
+}
+
+#main ul li.tax>div>a{
+  display: inline-block;
+  width: 187px;
+  height: 119px;
+  background: url(../../images/icon.png) no-repeat -689px -812px;
+}
+#main ul li.tax .upload{
+  width: 187px;
+  height: 119px;
+}
+
+#main ul li input,#main ul li select{
+  width:400px;
+  height:32px;
+  box-sizing: border-box;
+  padding-left:10px;
+  border:1px solid #D9D9D9;
+  outline: none;
+}
+
+#main ul li select{
+  width:194px;
+  color: #4B4B4B;
+}
+#main ul li select.province{
+  margin-right: 10px;
+}
+
+/*提交部分*/
+#main>div{
+  position: relative;
+  text-align: center;
+  margin-top: 70px;
+}
+#main>div a{
+  display: inline-block;
+  width:16px;
+  height:16px;
+  vertical-align: bottom;
+  margin-right: 2px;
+  background: url(../../images/icon.png) no-repeat -50px -404px;
+}
+#main>div a.checked{
+  background: url(../../images/icon.png) no-repeat -95px -404px;
+}
+
+/*
+* 信用保障协议相关样式
+* */
+#main .clause{
+  cursor: pointer;
+}
+#main div.clause div.safeguard{
+  display: none;
+  position: absolute;
+  left:50px;
+  bottom:40px;
+  width:1100px;
+  height:440px;
+  color:#333;
+  background: #FFF;
+  border: 1px solid #EBEBEB;
+  box-shadow: 0 0 10px 3px #EBEBEB;
+  z-index: 1000;
+}
+#main>div div.safeguard .safe_container{
+  margin:20px 40px 40px;
+}
+#main>div div.safeguard h2{
+  text-align: center;
+  margin-bottom: 30px;
+}
+#main>div div.safeguard .closeClause{
+  position: absolute;
+  right:10px;
+  top:16px;
+  font-size: 24px;
+  color: #9A9A9A;
+  cursor: pointer;
+}
+
+#main>div div.safeguard .mainText{
+  max-height: 325px;
+  overflow-y: auto;
+  text-align: left;
+  line-height:20px;
+}
+.mainText p{
+  text-indent: 2em;
+}
+.mainText p,.mainText div,.mainText h5,.mainText h6{
+  margin-bottom: 8px;
+}
+.mainText span{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+
+#main>input#submit {
+  width:260px;
+  height:50px;
+  margin-top: 20px;
+  margin-left: 465px;
+  border-radius: 5px;
+  border:none;
+  font-family: "Microsoft YaHei", Verdana, Arial, sans-serif;
+  font-size: 18px;
+  color:#fff;
+  background-color: #F95146;
+  outline: none;
+}
+#main>input#submit:hover{
+  cursor: pointer;
+}

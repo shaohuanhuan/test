@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>ExtDemo2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
+	<script type="text/javascript" src="extjs/ext-all.js"></script>
+		<script type="text/javascript">
+//json
+		var person={name:'lixinxin',age:27,sex:'man',married:false,books:[{bookName:'历史',price:90},{bookName:'数学',price:10}]     }
+		
+		alert('姓名'+person.name+" , 年龄"+person.age
+		      +", 第一本书:"+person.books[0].bookName+', 价钱'+person.books[0].price	
+		      +", 第二本书:"+person.books[1].bookName+', 价钱'+person.books[1].price
+		);
+//extJs
+		Ext.onReady(function(){
+			var config={
+				          title:'标题ABC',
+                  msg:'可以对比ExtDemo1'							
+				}		
+			Ext.Msg.show(config);		
+			});
+		</script>
+</head>
+<body></body>
+</html>

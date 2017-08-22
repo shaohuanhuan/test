@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>地理编码</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css"/>
+    <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&key=fa9d1c0dc2148442e4a1edc7feab36a4"></script>
+    <style type="text/css">
+      body{
+      margin:0;
+      height:100%;
+      width:100%;
+      position:absolute;
+    }
+    #mapContainer{
+      position: absolute;
+      top:0;
+      left: 0;
+      right:0;
+      bottom:0;
+    }
+    #tip{
+      position:absolute;
+      bottom:30px;
+      right:10px;
+    }
+    
+    #tip input{
+      background-color: #0D9BF2;
+      height:30px;
+      text-align:center;
+      color:#fff;
+      line-height:30px;
+      border-radius:3px;
+      padding-left:5px;
+      padding-right: 10px;
+      font-size:12px;
+      outline:none;
+      border:0;
+      cursor:pointer;
+    }
+    </style>
+</head>
+<body>
+<div id="mapContainer"></div>
+  <div id="tip">  
+    <input type="button" value="叠加google地图" onClick="javascript:addGoogle()"/>  
+    <input type="button" value="移除google地图" onClick="javascript:removeGoogle()"/> 
+  </div>
+  
+<script type="text/javascript">
+    //初始化地图对象，加载地图
+    var map = new AMap.Map('mapContainer', {
+      resizeEnable: true,
+      //二维地图显示视口
+      //设定地图中心点
+      //设置地图显示的缩放级别
+      view: new AMap.View2D({
+        center: new AMap.LngLat(119.300537,30.328403),
+        zoom: 13
+      })
+    });
+    //添加GOOGLE地图图层
+    var google = null;
+    function addGoogle(){
+      google = new AMap.TileLayer({
+                                zIndex:70,
+        //图块取图地址
+        tileUrl:'http://mt{1,2,3,0}.google.cn/vt/lyrs=m@142&hl=zh-CN&gl=cn&x=[x]&y=[y]&z=[z]&s=Galil'
+      });
+      google.setMap(map);
+    }
+    //移出GOOGLE地图图层
+    function removeGoogle(){
+      google.setMap(null);
+    }
+    addGoogle();
+    console.log(CalculationUrl(120,30));
+    //管理瓦片路径  
+function CalculationUrl(Val_lat,Val_lng)  
+{  
+    Val_lng = parseFloat(Val_lng);  
+    Val_lat = parseFloat(Val_lat);  
+      
+    var Val_zoom = 13;//MapAttr.CUTZOOM;//地图级别，设置为了全局变量  
+    var zoomN = Math.pow(2,Val_zoom);  
+      
+    var x = CalculationLng(Val_lng);  
+    var y = CalculationLat(Val_lat);  
+    //UrlDiv  
+    var url_x = x*zoomN;  
+    var url_y = y*zoomN;  
+      
+    return [Math.floor(url_x),Math.floor(url_y)];  
+      
+}  
+  
+//根据经度计算瓦片x值  
+function CalculationLng(lng)  
+{  
+    var x = (180.0 + parseFloat(lng)) / 360.0;  
+    return x;  
+}  
+  
+//根据纬度计算瓦片y值  
+function CalculationLat(lat)  
+{  
+    var PI = Math.PI;//3.1415926535897;  
+    var y = -parseFloat(lat) * PI / 180;   
+    y = 0.5 * Math.log((1+Math.sin(y)) / (1 - Math.sin(y)));  
+    y *= 1.0/(2 * PI);   
+    y += 0.5;  
+    return y;  
+}  
+</script>
+</body>
+</html>						
+
+	

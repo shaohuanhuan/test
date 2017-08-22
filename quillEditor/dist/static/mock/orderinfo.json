@@ -1,0 +1,91 @@
+{
+    "code": 0,
+    "message": "成功",
+    "data": {
+        "orderCode": "123343434678",
+        "totalCost": 30.0,
+        "originalCost": 30.0,
+        "amount": 620.0,
+        "originalAmount": 620.0,
+        "status": 2,
+        "refundTag":0,
+        "systemOrderStatus":1,
+        "source": "",
+        "createTime": 1472693648000,
+        "payTime":1472693648000,
+        "deliverTime":1472693648000,
+        "finishTime":1472693648000,
+        "shopId":"aa5459632bf64cbdb415f8d4b2e2f614",
+        "shopName":"云启的店铺",
+        "contactEmail":"taojiagui@onloon.com",
+        "logistNum":"123456",
+        "logistCompany": "天天快递",
+        "message": "",
+        "closedReason":"买家无理由退款",
+        "closeTime":1472693648000,
+        "amountUnit":"US",
+        "itemList": [{
+            "itemId": "123",
+            "productId": "376fd309e2ea4f09ad0d3b919e80207f",
+            "specKey": "color:red;size:M;",
+            "name": "可乐",
+            "img": "http://img.onloon.co/item/20160831134530286355064.jpg",
+            "price": 200.0,
+            "changePrice": 0.0,
+            "quantity": 3,
+            "discountAmount": 0.0,
+            "amount": 600.0,
+            "returnStatus":1,
+            "returnQuantity": 1,
+            "linkUrl":"http://onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+        },{
+            "itemId": "222",
+            "productId": "376fd309e2ea4f09ad0d3b919e80207f",
+            "specKey": "color:red;size:L",
+            "name": "可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22可乐22",
+            "img": "http://img.onloon.co/item/20160831134530286355064.jpg",
+            "price": 100.0,
+            "changePrice": 0.0,
+            "quantity": 2,
+            "discountAmount": 0.0,
+            "amount": 200.0,
+            "returnStatus":1,
+            "returnQuantity": 1,
+            "linkUrl":"http://onloon.com.cn/b2b_mobile/view/cmdDeyail/cmdDeyail.html"
+        }],
+        "address": {
+            "addressId": "aa5459632bf64cbdb415f8d4b2e2f614",
+            "name": "晨风",
+            "countryId": "974dd034f3ff462cb46461d06af315a2",
+            "countryName": "China",
+            "provinceName": "中国浙江省",
+            "city": "杭州市",
+            "postcode": "311100",
+            "telephone": "+86 13735492716",
+            "detailAddress": "余杭区西溪北苑",
+            "defaultAddress": true
+        },
+        "buyer": {
+            "uid": 1472264564818,
+            "nickname": "user4818"
+        },
+        "waybill": {
+            "waybillId":null,
+            "waybillNumber":null,
+            "posttime":null,
+            "cost":null,
+            "companyId":null,
+            "companyName":null,
+            "companyCode":"upsfreight ",
+            "content":null,
+            "isOtherLogist":1
+        },
+        "refund":{
+            "refundAmount":123,
+            "returnInvTag":1,
+            "returnFreightTag":0,
+            "refundReason":"无理由退款",
+            "amountUnit":"USD"
+        }
+    }
+}

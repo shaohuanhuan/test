@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>无标题文档</title>
+  <meta name="viewport" content="width=640,target-densitydpi=320, user-scalable=no"/>
+  <style>
+    .ui-turn-wrap{
+      width:640px;
+      height:640px;
+      background:url(../zhuanpan6.png);
+    }
+  </style>
+</head>
+  <body>
+  <div class="main">
+    <div class="ui-turn-wrap">
+      <div class="ui-turn-circle"></div>
+      <div class="ui-turn-pointer"></div>
+    </div>
+  </div>
+
+
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>ExtDemo5</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
+	<script type="text/javascript" src="extjs/ext-all.js"></script>
+		<script type="text/javascript">
+
+Ext.onReady(function(){	
+	Ext.QuickTips.init();
+	
+
+	var form =new Ext.form.Panel({	
+		title:'表单测试A',
+		height:200,
+		width:400,
+		frame:true,
+		renderTo:'form',
+	autoScroll : true,//滚动条
+	
+		defalts:{
+			        autoFitErrors:false,
+			        labelSeparator:':',
+			        labelWidth:50,
+			        width:150,
+			        allowBlank:false,
+			        blandText:'不允许为空',
+			        labelAlign:'left',
+		 	        msgTarget:'qtip',
+		 	        forceFit: true, 
+		 	        
+		 	        
+			       },
+			items:[{
+				     xtype:'textfield',
+				     fieldLabel:'文本框'
+				    },{
+					   xtype:'numberfield',
+			     	 fieldLabel:'数字框'
+			     	 },{
+					   xtype:'textareafield',
+			     	 fieldLabel:'多行框'		
+			     	   },{
+					   xtype:'datefield',
+			     	 fieldLabel:'日期框'     	 
+			     	  },{
+					   xtype:'timefield',
+			     	 fieldLabel:'时间框'
+			     	   },{
+					   xtype:'filefield',
+			     	 fieldLabel:'上传照片'
+			     	    }, {
+			      	xtype : 'radiogroup',
+			      	fieldLabel : '性别',
+				items : [ {
+					xtype : 'radio',
+					boxLabel : '男',
+					name : 'sex',
+					inputValue : '0',
+					checked : true
+				}, {
+					xtype : 'radio',
+					boxLabel : '女',
+					name : 'sex',
+					inputValue : '1'
+				} ]
+			}]
+	                          	});
+                     	});
+                     	
+                     	
+                  
+</script>
+</head>
+<body style="margin:10px">
+	<div id='form'></div>
+	<div id='errorMsg'></div>
+	
+	</body>
+</html>

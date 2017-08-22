@@ -1,0 +1,17 @@
+{"code":0,
+"message":null,
+"data":[{
+    "id":1,
+    "cateId":"VOE020_6_57",
+    "propertyNameCh":"金属种类",
+    "propertyNameEn":"Metal species",
+    "propertiesValueList":[{"id":1,"propertyId":"1","valueNameCh":"铝","valueNameEn":"Aluminum"},{"id":2,"propertyId":"1","valueNameCh":"铝合金","valueNameEn":"Aluminum Alloy"}]
+ },{
+    "id":2,
+    "cateId":"VOE020_222",
+    "propertyNameCh":"金属种类2",
+    "propertyNameEn":"Metal222",
+    "propertiesValueList":[{"id":3,"propertyId":"1","valueNameCh":"碳钢","valueNameEn":"Carbon Steel"},{"id":4,"propertyId":"1","valueNameCh":"生铁","valueNameEn":"Cast Iron"},{"id":5,"propertyId":"1","valueNameCh":"铁","valueNameEn":"Iron"},{"id":6,"propertyId":"1","valueNameCh":"不锈钢","valueNameEn":"Stainless Steel"},
+     {"id":7,"propertyId":"1","valueNameCh":"其它","valueNameEn":"Other"}]
+ }]
+ }

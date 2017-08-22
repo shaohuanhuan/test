@@ -1,0 +1,124 @@
+<div class="global-top">
+	\n
+	<div class="global-top-container">
+		\n
+		<ul class="global-top-right">
+			\n
+			<li class="global-top-item global-top-item-last">
+				\n
+				<a id="globalBirthIcon" href="http://abc.alipay.com/jiniance/index.htm" class="global-icon global-icon-birth global-hide" target="_blank"></a>
+				\n      {{#if isLogin}}\n
+				<li class="global-top-item">你好,</li>
+				\n
+				<li id="globalUser" class="global-top-item">
+					\n
+					<span class="global-top-text">
+						\n        {{{userName}}}\n <i class="iconfont global-top-angle">&#xF03C;</i>
+						\n
+					</span>
+					\n
+				</li>
+				\n      {{else}}\n
+				<span class="global-top-text">欢迎使用支付宝！</span>
+				\n      {{/if}}\n
+			</li>
+			\n    {{#if isLogin }}\n    {{#unless msgHide }}\n
+			<li id="globalMsg" class="global-top-item">
+				\n
+				<a href="{{couriercoreServer}}/messager/new.htm" seed="global-msg" target="_blank">
+					\n <i class="iconfont" title="提醒">&#xF056;</i>
+					\n
+					<span class="global-msg-count"></span>
+					\n
+				</a>
+				\n
+			</li>
+			\n <em class="global-top-item global-top-seperator">|</em>
+			\n    {{/unless}}\n    {{/if}}\n
+			<li class="global-top-item">
+				\n      {{#if isLogin}}\n
+				<a href="{{authCenterServer}}/login/logout.htm?goto={{authCenterServer}}" class="global-top-link" seed="global-exit-v1">退出</a>
+				\n      {{else}}\n
+				<a href="{{authCenterServer}}/login/index.htm?needTransfer=true&goto={{pageAbsUrl}}" class="global-top-link" seed="global-header-login">登录</a>
+				\n
+				<span class="global-top-seperator">-</span>
+				\n
+				<a href="{{personalServer}}/user/reg/index.htm" class="global-top-link" seed="global-header-register">注册</a>
+				\n      {{/if}}\n
+			</li>
+			\n <em class="global-top-item global-top-seperator">|</em>
+			\n
+			<li  class="global-top-item">
+				\n
+				<a class="global-top-link" href="{{personalportalServer}}" seed="global-portal-v1" target="_blank">我的支付宝</a>
+				\n
+			</li>
+			\n
+			<em class="global-top-item global-top-seperator">|</em>
+			\n
+			<li id="globalSecurity" class="global-top-item">
+				\n
+				<a class="global-top-link" href="{{securityServer}}/sc/index.htm" seed="global-security-v1" target="_blank">安全中心</a>
+				\n
+			</li>
+			\n
+			<em class="global-top-item global-top-seperator">|</em>
+			\n
+			<li id="globalHelp" class="global-top-item">
+				\n
+				<a class="global-top-link" href="http://help.alipay.com/lab/index.htm" seed="global-help" target="_blank">帮助中心</a>
+				\n
+				<i class="iconfont global-top-angle">&#xF03C;</i>
+				\n
+			</li>
+			\n
+			<li id="globalMore" class="global-top-item global-top-item-last">
+				\n
+				<i class="iconfont" title="记录">&#xF055;</i>
+				\n
+			</li>
+			\n
+		</ul>
+		\n
+		<ul class="global-top-left">
+			\n
+			<li class="global-top-item global-top-item-first {{#if showMobileLast}}global-top-item-last{{/if}}">
+				\n
+				<i class="iconfont" title="手机">&#xF033;</i>
+				\n
+				<a class="global-top-link" seed="global-mobile-v1" href="https://mobile.alipay.com/index.htm" target="_blank">支付宝钱包</a>
+				\n
+			</li>
+			\n    {{#if showOtherLogin}}\n
+			<em class="global-top-item global-top-seperator">|</em>
+			\n
+			<li class="global-top-item {{#if showOtherLoginLast}}global-top-item-last{{/if}}">
+				\n
+				<i class="iconfont" title="返回">&#xF040;</i>
+				\n      {{#if showTaobaoLogin}}\n
+				<a href="http://i.taobao.com/my_taobao.htm?r={{timestamp}}&userid={{userId}}" target="_blank" seed="global-return-taobao-v1" class="global-top-link">返回淘宝网</a>
+				\n      {{/if}}\n      {{#if showAlibabaLogin}}\n
+				<a href="http://china.alibaba.com/member/myalibaba.htm" class="global-top-link" target="_blank" seed="global-return-alibaba-v1">返回阿里助手</a>
+				\n      {{/if}}\n
+			</li>
+			\n    {{/if}}\n    {{#if showSwitch}}\n
+			<em class="global-top-item global-top-seperator">|</em>
+			\n
+			<li class="global-top-item {{#if showSwitchLast}}global-top-item-last{{/if}}">
+				\n
+				<i class="iconfont" title="切换">&#xF04D;</i>
+				\n      {{#if showMerchant}}\n
+				<a href="{{personalServer}}/user/switch2merchant.htm" seed="global-change-shanghu-v1" class="global-top-link">切换到商户版</a>
+				\n      {{/if}}\n      {{#if showPersonal}}\n
+				<a href="{{merchantwebServer}}/home/switchPersonal.htm" seed="global-change-geren-v1" class="global-top-link">切换到个人版</a>
+				\n      {{/if}}\n
+			</li>
+			\n    {{/if}}\n
+		</ul>
+		\n
+	</div>
+	\n
+</div>
+\n
+
+

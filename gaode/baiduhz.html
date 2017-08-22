@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin:0;
+            font-family:"微软雅黑";
+        }
+        #allmap{
+            width:100%;
+            height:100%;
+        }
+        p{
+            margin-left:5px; 
+            font-size:14px;
+        }
+        .img-wrap{
+          position: absolute;
+          top: 30px;
+          left: 30px;
+          width:130px;
+          height:130px;
+          padding:3px;
+          background:transparent;
+          border-radius: 100%;
+          border:1px solid #e40056;
+          text-align: center;
+        }
+        .img-wrap2{
+          top: 300px;
+          left: 300px;
+          border:1px solid #e40056;
+        }
+        .img-wrap img{
+          width:96%;
+          height: 96%;
+          border-radius: 100%;
+          border:3px solid #e40056;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=l4SRgSAQIVNHRWbdWGLwDCzR"></script>
+    <title>个性化地图设置页</title>
+</head>
+<body>
+    <div id="allmap"></div>
+    <div class="img-wrap"><img src="55.png"/></div>
+    <div class="img-wrap img-wrap2"><img src="55.png"/></div>
+</body>
+</html>
+<script type="text/javascript">
+      var map = new BMap.Map("allmap",{minZoom:13,maxZoom:13});  // 创建Map实例
+      map.centerAndZoom(new BMap.Point(120.2305537,30.188403),13);      // 初始化地图,用城市名设置地图中心点
+      
+
+      // 随机向地图添加25个标注
+      var bounds = map.getBounds();
+      var sw = bounds.getSouthWest();
+      var ne = bounds.getNorthEast();
+      var lngSpan = Math.abs(sw.lng - ne.lng);
+      var latSpan = Math.abs(ne.lat - sw.lat);
+      for (var i = 0; i < 25; i ++) {
+        var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+        addMarker(point);
+      }
+
+      map.enableScrollWheelZoom(false);
+      map.disableDragging();     //禁止拖拽
+      
+      var opts = {
+            width : 200,     // 信息窗口宽度
+            height: 100,     // 信息窗口高度
+            title : "海底捞王府井店" , // 信息窗口标题
+            enableMessage:true,//设置允许信息窗发送短息
+            message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+          }
+      var infoWindow = new BMap.InfoWindow("地址：北京市东城区王府井大街88号乐天银泰百货八层", opts);  // 创建信息窗口对象 
+
+      // 编写自定义函数,创建标注
+      function addMarker(point){
+        var marker = new BMap.Marker(point);
+        map.addOverlay(marker);
+        marker.addEventListener("click", function(){          
+          map.openInfoWindow(infoWindow,point); //开启信息窗口
+        });
+      }
+      
+     
+      //个性化在线编辑器地址：http://developer.baidu.com/map/custom/
+      var styleJson = [{
+              "featureType": "background",
+              "elementType": "all",
+              "stylers": {
+                      "color": "#000000"
+              }
+            },
+            {
+              "featureType": "water",
+              "elementType": "geometry.fill",
+              "stylers": {
+                      "color": "#343434"
+              }
+            },
+            {
+              "featureType": "local",//普通道路
+              "elementType": "all",
+              "stylers": {
+                        "color": "#8b8787"
+                      }
+            },
+            {
+              "featureType": "label",//行政标注
+              "elementType": "labels.text.stroke",
+              "stylers": {
+                        "color": "#000000"
+                      }
+            },
+            {
+              "featureType": "label",
+              "elementType": "labels.text.fill",
+              "stylers": {
+                        "color": "#686868"
+                      }
+            },
+            {
+              "featureType": "highway",//高速及国道
+              "elementType": "geometry",
+              "stylers": {
+                  "color": "#444444"
+              }
+            },
+            {
+              "featureType": "highway",
+              "elementType": "labels.text.fill",
+              "stylers": {
+                        "color": "#686868"
+                      }
+            },
+            {
+              "featureType": "highway",
+              "elementType": "labels.text.stroke",
+              "stylers": {
+                        "color": "#333333"
+                      }
+            },
+            {
+              "featureType": "subway",//地铁
+              "elementType": "geometry",
+              "stylers": {
+                   "color": "#686868"
+                        }
+            },
+             {
+              "featureType": "subway",
+              "elementType": "labels.text.fill",
+              "stylers": {
+                        "color": "#686868"
+                        }
+            },
+            {
+              "featureType": "subway",
+              "elementType": "labels.text.stroke",
+              "stylers": {
+                        "color": "#333333"
+                 }
+            },
+            {
+              "featureType": "arterial",//城市主道
+              "elementType": "labels.text.stroke",
+              "stylers": {
+                        "color": "#333333"
+                 }
+            },
+            {
+              "featureType": "arterial",
+              "elementType": "labels.text.fill",
+              "stylers": {
+                        "color": "#686868"
+                      }
+            },
+            {
+              "featureType": "arterial",
+              "elementType": "geometry.fill",
+              "stylers": {
+                   "color": "#444444"
+              }
+            },
+            {
+              "featureType": "arterial",
+              "elementType": "geometry.stroke",
+              "stylers": {
+                     "color": "#434343"
+              }
+            },
+            {
+              "featureType": "poi",//小地区名
+              "elementType": "labels.text.fill",
+              "stylers": {
+                      "color": "#686868"
+                    }
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels.text.stroke",
+              "stylers": {
+                      "color": "#333333"
+                    }
+            },
+            {
+              "featureType": "railway",//铁路
+              "elementType": "geometry",
+              "stylers": {
+                    "color": "#686868"
+                  }
+            },
+            {
+              "featureType": "green",//绿地
+              "elementType": "geometry",
+              "stylers": {
+                      "color": "#181818"
+                  }
+            }];
+
+      map.setMapStyle({styleJson:styleJson});
+</script>
+

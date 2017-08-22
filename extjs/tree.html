@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+<title>ExtDemo1</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
+	<script type="text/javascript" src="extjs/ext-all-debug.js"></script>
+	<script type="text/javascript">
+Ext.onReady(function() {
+    //创建一棵树
+    var tree = Ext.create('Ext.tree.Panel', {
+        title : '目录',
+        width : 200,
+        height : 500,
+        renderTo : Ext.getBody(),
+        rootVisible:false,
+        root : {
+                text : '',  //一级目录
+                expanded : false, //不展开
+                children : [ {
+                    text : '用户信息', //二级 文件
+                    children:[{
+                        text : '用户数据3232',
+                        leaf : true,
+                        handler:function(){
+                            alert(0)
+                        }
+
+                    }]
+                }, {
+                    text : '客户信息',
+                    children:[{
+                        text : '用户数据3232',
+                        leaf : true
+                    }]
+
+                } ],
+                
+            },
+            listeners: {
+                    click:function(){
+                        alert(1)
+                        }
+                    }
+    });
+});
+function tree_itemclick( node, event )  
+    {  
+        var id = event.data.id ;  
+alert(0)
+        consoleLog( event.data );
+        
+    };  
+</script>  
+</head>  
+<body>  
+ <div id="tree"></div>  
+</body>  
+</html>

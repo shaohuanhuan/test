@@ -1,0 +1,12 @@
+{
+  "name": "3",
+  "version": "1.0.0",
+  "description": "",
+  "type": "overlay",
+  "format": "png",
+  "minzoom": "4",
+  "maxzoom": "6",
+  "bounds": "104.85506950,36.41326149,120.92967698,48.41531051",
+  "scale": "1",
+  "profile": "mercator"
+}

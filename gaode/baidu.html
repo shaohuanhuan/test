@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin:0;
+            font-family:"微软雅黑";
+        }
+        #allmap{
+            width:100%;
+            height:100%;
+        }
+        p{
+            margin-left:5px; 
+            font-size:14px;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=l4SRgSAQIVNHRWbdWGLwDCzR"></script>
+    <title>个性化地图设置页</title>
+</head>
+<body>
+    <div id="allmap"></div>
+    <p>底图样式可通过<a href='http://developer.baidu.com/map/custom/' target="_blank">个性化在线编辑器</a>编辑获取</p>
+</body>
+</html>
+<script type="text/javascript">
+    var map = new BMap.Map('allmap');
+    map.centerAndZoom(new BMap.Point(120.090537,30.280403), 14);
+      
+    map.addControl(new BMap.NavigationControl());        // 添加平移缩放控件
+    map.addControl(new BMap.ScaleControl());             // 添加比例尺控件
+    map.addControl(new BMap.OverviewMapControl());       //添加缩略地图控件
+    map.enableScrollWheelZoom();                         //启用滚轮放大缩小
+    map.disable3DBuilding();
+
+    //个性化在线编辑器地址：http://developer.baidu.com/map/custom/
+      var styleJson = [
+                        {
+                          "featureType": "background",
+                          "elementType": "all",
+                          "stylers": {
+                                  "color": "#000000"
+                          }
+                        },
+                        {
+                          "featureType": "water",
+                          "elementType": "geometry.fill",
+                          "stylers": {
+                                  "color": "#343434"
+                          }
+                        },
+                        {
+                          "featureType": "local",//普通道路
+                          "elementType": "all",
+                          "stylers": {
+                                    "color": "#8b8787"
+                                  }
+                        },
+                        {
+                          "featureType": "label",//行政标注
+                          "elementType": "labels.text.stroke",
+                          "stylers": {
+                                    "color": "#000000"
+                                  }
+                        },
+                        {
+                          "featureType": "label",
+                          "elementType": "labels.text.fill",
+                          "stylers": {
+                                    "color": "#686868"
+                                  }
+                        },
+                        {
+                          "featureType": "highway",//高速及国道
+                          "elementType": "geometry",
+                          "stylers": {
+                              "color": "#444444"
+                          }
+                        },
+                        {
+                          "featureType": "highway",
+                          "elementType": "labels.text.fill",
+                          "stylers": {
+                                    "color": "#686868"
+                                  }
+                        },
+                        {
+                          "featureType": "highway",
+                          "elementType": "labels.text.stroke",
+                          "stylers": {
+                                    "color": "#333333"
+                                  }
+                        },
+                        {
+                          "featureType": "subway",//地铁
+                          "elementType": "geometry",
+                          "stylers": {
+                               "color": "#686868"
+                                    }
+                        },
+                         {
+                          "featureType": "subway",
+                          "elementType": "labels.text.fill",
+                          "stylers": {
+                                    "color": "#686868"
+                                    }
+                        },
+                        {
+                          "featureType": "subway",
+                          "elementType": "labels.text.stroke",
+                          "stylers": {
+                                    "color": "#333333"
+                             }
+                        },
+                        {
+                          "featureType": "arterial",//城市主道
+                          "elementType": "labels.text.stroke",
+                          "stylers": {
+                                    "color": "#333333"
+                             }
+                        },
+                        {
+                          "featureType": "arterial",
+                          "elementType": "labels.text.fill",
+                          "stylers": {
+                                    "color": "#686868"
+                                  }
+                        },
+                        {
+                          "featureType": "arterial",
+                          "elementType": "geometry.fill",
+                          "stylers": {
+                               "color": "#444444"
+                          }
+                        },
+                        {
+                          "featureType": "arterial",
+                          "elementType": "geometry.stroke",
+                          "stylers": {
+                                 "color": "#434343"
+                          }
+                        },
+                        {
+                          "featureType": "poi",//小地区名
+                          "elementType": "labels.text.fill",
+                          "stylers": {
+                                  "color": "#686868"
+                                }
+                        },
+                        {
+                          "featureType": "poi",
+                          "elementType": "labels.text.stroke",
+                          "stylers": {
+                                  "color": "#333333"
+                                }
+                        },
+                        {
+                          "featureType": "green",//绿地
+                          "elementType": "geometry",
+                          "stylers": {
+                                  "color": "#181818"
+                              }
+                        }
+         /*{
+           "featureType": "all",
+           "elementType": "geometry",
+           "stylers": {
+                     "hue": "#007fff",
+                     "saturation": 89
+           }
+         },
+         {
+           "featureType": "water",
+           "elementType": "all",
+           "stylers": {
+                     "color": "#ffffff"
+           }
+         }*/
+     ]
+    map.setMapStyle({styleJson:styleJson});
+</script>
+

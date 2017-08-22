@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+
+    <title>理疗师位置</title>
+
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet"  type="text/css"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css"  />
+
+
+		<style>
+      body{
+        margin: 0;
+        overflow-x: hidden;
+        zoom: 1;
+      }
+      .form-control{
+        width: 200px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .ui-time{
+        margin-top: 20px;
+        display: none;
+      }
+		</style>
+
+  </head>
+    <body>
+     <!--<div class="sel-group fn-hide">
+      <a href="#" class="btn-blue">用户</a>
+      <a href="#" class="btn-blue">理疗师</a>
+     </div>-->
+     <div class="sel-group form-horizontal">
+      <select class="form-control" id="prdname">
+      </select>
+      <input type="text" class="form-control" id="date-picker" >
+      <button type="button" class="btn btn-default" id="search">搜索</button>
+      <select class="form-control ui-time" id="time">
+      </select>
+     </div>
+
+	   <div id="allmap" class="main" style="width:1000px;height:500px;"></div>
+
+  </body>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=l4SRgSAQIVNHRWbdWGLwDCzR"></script>
+    <script src="jQuery-2.1.4.min.js"></script>
+    <script src="bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="common.js"></script>  
+    <script type="text/javascript">  
+        var map = new BMap.Map("allmap",{minZoom:5,maxZoom:23});  // 创建Map实例
+          //map.centerAndZoom(new BMap.Point(119.6005537,30.488403),13);      // 初始化地图,用城市名设置地图中心点
+          map.centerAndZoom("杭州",12); 
+
+          /*setMarker();
+          setInterval(function(){
+            setMarker();
+          },300000);*/
+         $('#date-picker').daterangepicker({
+              timePicker: false,
+              timePicker12Hour: false,
+              singleDatePicker: true,
+              format: 'YYYY-MM-DD'
+          });
+      
+           
+          map.enableScrollWheelZoom(false);
+          //map.disableDragging();     //禁止拖拽
+                 
+           
+          darkMap(map);
+          setWH();
+          var opts = {
+              width : 250,     // 信息窗口宽度
+              height: 80,     // 信息窗口高度
+              title : "停留时间" , // 信息窗口标题
+              enableMessage:true//设置允许信息窗发送短息
+          };
+          //overProp2(map);
+          $.ajax({
+             url:"http://121.40.241.22:5002/location/provider",
+             dataType:"jsonp",
+             jsonp:"callback",
+             type:"get",
+             success:function(resp){
+                 var opt = '';
+                 for(var i = 0; i<resp.data.length;i++){
+                   opt += '<option value="'+ resp.data[i].id +'">'+ resp.data[i].name +'</option>';
+                 }
+                 $('#prdname').html('').append(opt);
+             }
+         });
+           $('#search').on('click',function(){
+             var pid = $('#prdname').val(),
+                 day = $('#date-picker').val();
+                $.ajax({
+                   url:"http://121.40.241.22:5002/location/location?pid=" + pid + "&day=" + day,
+                   method:"get",
+                   dataType: "jsonp",
+                   jsonp:"callback"
+                  }).done(function(resp) {
+                   map.clearOverlays(); 
+                   console.log(resp)
+                   var opt = '';
+                   for(var i = 0; i<resp.data.length;i++){
+                        var ln = resp.data[i].location.split(',');
+                        var point = new BMap.Point(ln[0],ln[1]);
+                        var marker = new BMap.Marker(point);  // 创建标注
+                        map.addOverlay(marker);              // 将标注添加到地图中
+                        addClickHandler(resp.data[i].gmt_create,marker); 
+
+                        
+                        opt += '<option value="'+ resp.data[i].id +'">'+ 
+                               resp.data[i].gmt_create +'</option>';
+                       $('#time').css('display','block').html('').append(opt);
+                   }
+                   // console.log(resp)
+                   // for(var i = 0; i<resp.data.length;i++){
+                   //      var ln = resp.data[i].location.split(',');
+                   //      var point = new BMap.Point(ln[0],ln[1]);
+                   //      //var type = resp.data[i].serviceitems;
+                   //      addComplexMarker(point,'t0');
+                   // }
+                 });
+           });
+            function addClickHandler(content,marker){
+              marker.addEventListener("click",function(e){
+                openInfo(content,e)}
+              );
+            }
+            function openInfo(content,e){
+              var p = e.target;
+              var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+              var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+              map.openInfoWindow(infoWindow,point); //开启信息窗口
+            }
+
+          //用户图标
+          function addComplexMarker(point,type){
+            var marker = new defOverlay(point,type);
+            map.addOverlay(marker);
+          }
+          
+    </script>  
+
+
+</html>

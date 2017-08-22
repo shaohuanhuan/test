@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>28分菜单页面</title>
+    <meta name="description" content="Interactive editorial/blog about my summer in New York and at IDEO.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  
+    <script src="jquery.js"></script>
+    <script>
+     var img = new Image();
+        img.src = "pointer.png";
+     
+        img.onload = function(){
+            alert(this.src);
+            //other    
+        };
+     $(function(){
+       
+     });
+
+    var p=/^([1-9][\d]{0,}|0)(\.[\d]{1,})?$/;
+    function dd(obj){
+       var dd=$('#dd').val();
+          if(p.exec(dd)){
+            var vv=typeof dd=='string',
+               cc= typeof(obj)=='object';
+            alert(vv+';;;'+cc+';;'+typeof s)
+          }
+    }
+
+    function Animal(name){      
+      this.name = name;      
+      this.showName = function(){      
+          //alert(this.name);      
+      }      
+    }      
+        
+    function Cat(name){    
+        Animal.call(this, name);    
+    }      
+        
+    var cat = new Cat("Black Cat");     
+       cat.showName();  
+
+
+    </script>
+  </head>
+  <body>
+    <div class="container fn-clear">
+      <div class="left-container"><input id="dd" type="text"/><input type="button" value="od" onclick="dd(this);"/></div>
+      <div class="right-container"></div>
+    </div>
+  </body>
+</html>

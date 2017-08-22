@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no" />
+  <title>【壹康复】春季大保养，从排毒祛痘开始！现在预定还能优惠80元！</title>
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="/css/spring-maintenance.css">
+  <script type="text/javascript">
+  var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?2e3655f6cb926acd18659e3e6f92d72b";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+</head>
+<body>
+  <div style="display:none;"><img src="/images/wc-share-logo.jpg"/></div>
+  <div class="first full">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAMAAAANf8AYAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAqUExURUxpcbTJurTJurTJurTJurTJurTJurTJurTJurTJurTJurTJurTJurTJumECzIQAAAANdFJOUwAQYNAwoPCAUODAsHDbJEKtAAAARklEQVRIx+3VyQkAIBAEQe9780/XNYQRRNDpf73bmKdzrVvUZBGPoiEbKBIREd1HETRBTQVJUlNw4khISA6R9XqULIOSP5t2yAf5ilMyTQAAAABJRU5ErkJggg==" id="to-right-1" alt="" class="arrow arrow-right animation-arrow-right" >
+  </div>
+  <div class="second full" style="display: none">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAMAAAANf8AYAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAVUExURUxpcfLu5fLu5fLu5fLu5fLu5fLu5TDgKroAAAAGdFJOUwDQEGCgwMr+mi4AAAA+SURBVEjH7dQxCgAgDEPRtNrc/8ji6taAIJi/v/UD3zWq2oSkQEIgaWJicolAINvM7jFCQGlkZPQAgoDgjhZGQQPgFbfN2QAAAABJRU5ErkJggg==" id="to-left-2" alt="" class="arrow arrow-left animation-arrow-left" >
+  </div>
+  <script src="/js/hammer.min.js"></script>
+  <script>
+    var first = document.querySelector('.first');
+    var second = document.querySelector('.second');
+    var firstMove = function(){
+      second.style.display = '';
+      second.className = "second full next-page";
+      first.className = "first full"
+    };
+    var secondMove = function(){
+      second.style.display = '';
+      second.className = "second full prev-page";
+      setTimeout(function(){
+        second.style.display = 'none';
+      }, 500);
+    };
+    new Hammer(document.getElementById('to-right-1')).on('tap', firstMove);
+    new Hammer(first).on('swipeleft', firstMove);
+
+    new Hammer(document.getElementById('to-left-2')).on('tap', secondMove);
+    new Hammer(second).on('swiperight', secondMove);
+  </script>
+</body>
+</html>

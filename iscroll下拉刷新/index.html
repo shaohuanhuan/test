@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#eee;" >
+<head>
+	<meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=640, target-densitydpi=320, user-scalable=no">
+	<title></title>
+    <link rel="stylesheet"href="style/base.css">
+    <link rel="stylesheet" href="style/iconfont.css">
+    <link rel="stylesheet" href="style/style.css">
+    
+</head>
+<body>
+	<header class="scrollTop">
+			refresh
+	</header>
+	<section id="wrapper" class="wrapper-content ui-search-content">
+		<div class="wrapper-scroll wrapper-refresh-scroll">
+			<div class="ui-fresh-inner" id="fresh-wrap-down" data-flag="">
+				<i class="iconfont iconarr"></i>
+				<p class="ui-fresh-text">轻轻下拉，刷新精彩</p>
+			</div>
+			<ul class="ui-list" style="background:#fff;">
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+				<li class="ui-list-item">
+					<p class="ui-list-infor ui-arrow-right">可点击普通列表</p>
+				</li>
+
+			</ul>
+			<div class="ui-fresh-inner" id="fresh-wrap-up" data-flag="">
+				<span class="ui-fresh-text">更多...</span>
+			</div>
+		</div>
+	</section>
+	<script src="js/lib/sea.js"></script>
+	<script>
+	seajs.config({
+			base:'./js/',
+			alias:{
+				'$':'lib/zepto.js'
+			}
+		});
+		seajs.use('base',function(base){
+			var pullDownFunc=function(){
+				$(".ui-list").append('<li class="ui-list-item"><p class="ui-list-infor ui-arrow-right">可点击普通列表</p></li><li class="ui-list-item"><p class="ui-list-infor ui-arrow-right">可点击普通列表</p></li><li class="ui-list-item"><p class="ui-list-infor ui-arrow-right">可点击普通列表</p></li>');
+				this.refresh();
+			}
+			var pullUpFunc=function(){
+				$(".ui-list").append('<li class="ui-list-item"><p class="ui-list-infor ui-arrow-right">可点击普通列表</p></li><li class="ui-list-item"><p class="ui-list-infor ui-arrow-right">可点击普通列表</p></li><li class="ui-list-item"><p class="ui-list-infor ui-arrow-right">可点击普通列表</p></li>');
+				this.refresh();
+			}
+
+			var myScroll=base.loadRefresh.loaded(pullDownFunc,pullUpFunc);
+			myScroll.refresh();
+
+			$('body').on('click','.ui-list-infor',function(){
+				console.log(1)
+			})
+		});
+	</script>
+</body>
+</html>
