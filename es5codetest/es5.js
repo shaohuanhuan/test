@@ -13,7 +13,7 @@
 //   a2 = 1;
 //   console.log(a2);// 1
 // };
-// a2(); 
+// a2();
 //上面a1 a2的结果居然不一样？？？
 
 //变量提升--------------------2
@@ -34,7 +34,7 @@
 // a = 10;
 // function a() {}
 // }
-// b();// 
+// b();//
 
 
 //函数提升------------------------3
@@ -45,7 +45,7 @@
 //     function age() {}
 //     console.log(age);//27
 // }
-// t1(3); 
+// t1(3);
 
 // //上面相当于这个
 // function t2(age2) {
@@ -67,7 +67,7 @@
 // Foo.prototype.getName = function () { console.log(3);};
 // var getName = function () { console.log(4);};
 // function getName() { console.log(5);}
- 
+
 // //请写出以下输出结果：
 // Foo.getName();//2
 // console.log('mm1')
@@ -84,16 +84,16 @@
 // new new Foo().getName();//3
 // console.log('mm7')
 
-// var a = 1; 
-// function b() { 
+// var a = 1;
+// function b() {
 //   alert(a); //function a(){}
-//   a = 10; 
-// function a() {} 
-// } 
+//   a = 10;
+// function a() {}
+// }
 // b();
 
 // var a6 =1;
-// function b6(){ 
+// function b6(){
 //   var a6;
 //   a6 = function(){
 //   }
@@ -107,7 +107,7 @@
 // var i = 1;
 // alert(i);// 1
 // };
-// a(10); 
+// a(10);
 
 //变量属性-----------------4
 //当一个变量被声明后，扩充其属性并不会改变原数据类型。
