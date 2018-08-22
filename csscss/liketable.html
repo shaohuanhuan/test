@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>列表</title>
+
+<style>
+	.box2{
+		display: flex;
+                         justify-content: center;/*水平居中*/
+                         align-items: center;/*垂直居中,这样写了box-flex:1的孩子就会垂直居中*/
+                         margin: 0 auto;
+
+	}
+
+	.box2{
+     width: 1200px;
+     height: 300px;
+     border: 5px solid #333;
+
+	}
+  .list-item{
+    display: flex;
+   justify-content: center;/*水平居中*/
+   align-items: center;/*垂直居中,这样写了box-flex:1的孩子就会垂直居中*/
+   margin: 0 auto;
+  }
+  .list-item li{
+    list-style: none;
+    width: 33%;
+    height: 100%;
+    align-items: center;
+    border: 1px solid black;
+    border-right: 0;
+  }
+  .list-item li div{
+    height: auto;
+
+  }
+</style>
+</head>
+
+<body>
+
+<div class="box2">
+	CSS3中利用Flexbox实现DIV标签元素垂直居中
+</div>
+<div class="box3">
+   <h1>CSS3中利用Flexbox实现DIV标签元素垂直居中-css3教程-Css教程-壹...</h1>
+	<h1>CSS3中利用Flexbox实现DIV标签元素垂直居中-css3教程-Css教程-壹...</h1>
+</div>
+<ul class="list-item">
+  <li>
+   <div>eeeeeeeeeeeee</div>
+   </li>
+  <li>
+    <div>111111111</div>
+    <div>wwwwwwwwwwwww</div>
+    <div>22222222222</div>
+  </li>
+  <li></li>
+</ul>
+
+</body>
+</html>
