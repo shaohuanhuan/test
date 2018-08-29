@@ -1,0 +1,5 @@
+{"code": 200, "data":
+  [{"id":1,"createTime":"2016-05-02","updateTime":"2016-05-02","username":"王小虎","nickname":"秋老虎","email":"191991@qq.com","mobile":"15000005555","status1": "1"},
+  {"id":2,"createTime":"2016-05-02","updateTime":"2016-05-02","username":"王小虎","nickname":"秋老虎","email":"191991@qq.com","mobile":"15000005555","status1": 0},
+  {"id":3,"createTime":"2016-05-02","updateTime":"2016-05-02","username":"王小虎","nickname":"秋老虎","email":"191991@qq.com","mobile":"15000005555","status1": 1}]
+}
