@@ -54,30 +54,30 @@ var foo = 2;
 // }
 // console.log(ok)//能
 
- // var a = 1;  
- // function test1() {  
- //     console.log(1,a);  
- //     var a = 2;  
- //     console.log(2,a);  
- // }  
- // test1();   
+ // var a = 1;
+ // function test1() {
+ //     console.log(1,a);
+ //     var a = 2;
+ //     console.log(2,a);
+ // }
+ // test1();
  // console.log(3,a);//1,undefined  2,2  3,1
 
 //4--------------------4
-//  var a =1;  
-// function test(){  
-//     console.log(a); 
-// a为undefined! 这个a并不是全局变量，这是因为在function scope里已经声明了（函数体倒数第4行）一个重名的局部变量,  
-// 所以全局变量a被覆盖了，这说明了Javascript在执行前会对整个脚本文件的定义部分做完整分析,所以在函数test()执行前,  
+//  var a =1;
+// function test(){
+//     console.log(a);
+// a为undefined! 这个a并不是全局变量，这是因为在function scope里已经声明了（函数体倒数第4行）一个重名的局部变量,
+// 所以全局变量a被覆盖了，这说明了Javascript在执行前会对整个脚本文件的定义部分做完整分析,所以在函数test()执行前,
 // 函数体中的变量a就被指向内部的局部变量.而不是指向外部的全局变量. 但这时a只有声明，还没赋值，所以输出undefined。
 // 这=   var a; console.log(a)
-//     a=4         
-//     console.log(a);  //a为4,没悬念了吧？ 这里的a还是局部变量哦！  
-//     var a;     //局部变量a在这行声明  
-//     console.log(a);  //a还是为4,这是因为之前已把4赋给a了  
-// }  
-// test();  
-// console.log(a); //a为1，这里并不在function scope内，a的值为全局变量的值  
+//     a=4
+//     console.log(a);  //a为4,没悬念了吧？ 这里的a还是局部变量哦！
+//     var a;     //局部变量a在这行声明
+//     console.log(a);  //a还是为4,这是因为之前已把4赋给a了
+// }
+// test();
+// console.log(a); //a为1，这里并不在function scope内，a的值为全局变量的值
 
 
 //es6 不存在变量提升
@@ -215,8 +215,11 @@ f1()
 
 // 内层作用域可以定义外层作用域的同名变量。
 {{{{
-  let insane = 'Hello World';
-  {let insane = 'Hello World'}
+  let insane = 'Hello World1';
+  {let insane = 'Hello World2'
+  console.log(insane) // Hello World2
+  }
+  console.log('insane', insane) // Hello World1
 }}}};
 
 //13------------------------------13
@@ -226,7 +229,10 @@ f1()
   var tmp = 111;
  console.log(tmp)
 }());
-
+// (function () {
+//   var tmp = 111;
+//  console.log(tmp)
+// })(); 上面执行结果跟这个相同
 // 块级作用域写法
 {
   let tmp = 222;
@@ -270,13 +276,17 @@ try {
 // ES6 规定，块级作用域之中，函数声明语句的行为类似于let，在块级作用域之外不可引用。
 // function f() { console.log('I am outside!'); }
 // (function () {
+//   // BBB
 //   if (false) {
-//     // 重复声明一次函数f
+//     // 重复声明一次函数f AAA
 //     function f() { console.log('I am inside!'); }
 //   }
 
-//   f();//???????????chrome -f is not a function
+//   f();// chrome -f is not a function
 // }());
+// es5里 AAA会变量提升到BBB的位置，所以会输出"I am inside"
+// ES6中，理论上会得到 "I am outside",因为块级作用域内声明的函数类似于let,对作用域之外没有影响，但是，实际情况下是报错的。
+// 因为 改变了块级作用域内的函数的处理规则，会对旧代码产生很大影响，为此，ES6附录B中规定，浏览器的实现可以不遵守上面的规定，而有自己的行为方式
 
 // 上面代码在 ES5 中运行，会得到因为在if内声明的函数f会被提升到函数头部，
 // 实际运行的代码如下。
